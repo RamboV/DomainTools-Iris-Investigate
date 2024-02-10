@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_complex_object">
+    <sys_complex_object action="INSERT_OR_UPDATE">
+        <label/>
+        <name>FD487ffee55e040210a3c365776deb44ce</name>
+        <namespace>FlowDesigner</namespace>
+        <scope_name>5d147aa493cc0210524174418bba1073</scope_name>
+        <serialized_content>{"FlowDesigner:FD487ffee55e040210a3c365776deb44ce":{"code":"Integer","code.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"Integer\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"integer\",\"default_value\":\"\",\"label\":\"Code\",\"action_error_output\":\"true\",\"mandatory\":\"false\",\"order\":\"1\",\"max_length\":\"40\"}"},"message":"String","message.$field_facets":{"SimpleMapFacet":"{\"uiTypeLabel\":\"String\",\"read_only\":\"false\",\"hint\":\"\",\"uiType\":\"string\",\"default_value\":\"\",\"label\":\"Message\",\"action_error_output\":\"true\",\"mandatory\":\"false\",\"order\":\"2\",\"max_length\":\"4000\"}"}},"FlowDesigner:FD487ffee55e040210a3c365776deb44ce.$type_facets":{"SimpleMapFacet":"{\"sourceId\":\"\",\"default_value\":\"\",\"label\":\"Action Status\",\"action_error_output\":\"true\",\"mandatory\":\"false\",\"uiUniqueId\":\"170bb674-46ef-4609-b0ed-752aa1db1348\",\"uiTypeLabel\":\"Object\",\"co_type_name\":\"FD487ffee55e040210a3c365776deb44ce\",\"element_mapping_provider\":\"com.glide.flow_design.action.data.FlowDesignVariableMapper\",\"read_only\":\"false\",\"sourceUiUniqueId\":\"\",\"sourceType\":\"\",\"hint\":\"\",\"uiType\":\"object\",\"order\":\"2\",\"max_length\":\"65000\"}"}}</serialized_content>
+        <sys_class_name>sys_complex_object</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-30 10:14:58</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>4c7ffee593040210524174418bba10ce</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>FD487ffee55e040210a3c365776deb44ce</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="DomainTools Iris Investigate" source="x_952688_domaintoo">5d147aa493cc0210524174418bba1073</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_update_name>sys_complex_object_4c7ffee593040210524174418bba10ce</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-02-01 08:20:11</sys_updated_on>
+        <type>complex_object_schema</type>
+    </sys_complex_object>
+</record_update>

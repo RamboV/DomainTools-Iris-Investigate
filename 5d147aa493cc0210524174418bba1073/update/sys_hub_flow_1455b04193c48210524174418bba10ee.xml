@@ -1,0 +1,1982 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_hub_flow">
+    <sys_hub_flow action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <acls/>
+        <active>false</active>
+        <annotation/>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category/>
+        <compiler_build>local</compiler_build>
+        <copied_from>51e8b8be0b61001099b8ea7885673ae1</copied_from>
+        <copied_from_name>Security Operations RiskIQ Whois</copied_from_name>
+        <description>RiskIQ WHOIS Integration V1</description>
+        <internal_name>security_operations_domaintools_iris_investigate_v1</internal_name>
+        <label_cache>[{"name":"subflow.domain_id","label":"Input➛Domain Id","reference":"","reference_display":"","type":"domain_id","base_type":"domain_id","column_name":"","attributes":{"uiType":"domain_id","uiTypeLabel":"Domain ID","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"43fe970f-a369-4063-9cef-c58253fa97f6","sourceUiUniqueId":"","sourceType":"","sourceId":""}},{"name":"a77bc3b9-941f-459a-8936-1f55009e98d3.returnval","label":"6 - Call a Workflow➛Return Value","reference_display":"Return Value","type":"string","base_type":"string","attributes":{"pills_draggable_inside_block":"false","pills_draggable_outside_block":"true"}},{"name":"a77bc3b9-941f-459a-8936-1f55009e98d3.result","label":"6 - Call a Workflow➛Result","reference_display":"Result","type":"string","base_type":"string","attributes":{"pills_draggable_inside_block":"false","pills_draggable_outside_block":"true"}},{"name":"a77bc3b9-941f-459a-8936-1f55009e98d3.context","label":"6 - Call a Workflow➛Context","reference":"wf_context","reference_display":"Context","type":"reference","base_type":"reference","attributes":{"pills_draggable_inside_block":"false","pills_draggable_outside_block":"true"}},{"name":"a77bc3b9-941f-459a-8936-1f55009e98d3.state","label":"6 - Call a Workflow➛State","reference_display":"State","type":"string","base_type":"string","attributes":{"pills_draggable_inside_block":"false","pills_draggable_outside_block":"true"}},{"name":"d8a49f10-9452-460d-bd47-be158dbf608a.Record.integration.sys_id","label":"3 - Look Up Record➛Integration Capability Implementation Record➛Integration➛Sys ID","reference":"","reference_display":"Sys ID","type":"GUID","base_type":"GUID","parent_table_name":"sn_sec_core_integration_item","column_name":"sys_id"},{"name":"41732e1c-8b1c-4554-b536-aeca2170f6dd.record.sys_id","label":"4 - Create Record➛Integration Capability Execution Record➛Sys ID","reference":"","reference_display":"Sys ID","type":"GUID","base_type":"GUID","parent_table_name":"sn_sec_cmn_integration_capability_execution","column_name":"sys_id"},{"name":"subflow.input_parameters","label":"Input➛Input Parameters","reference":"","reference_display":"","type":"json","base_type":"json","column_name":"","attributes":{"uiType":"json","uiTypeLabel":"JSON","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"f500535d-eeca-4572-9c7c-d169d0bad8cc","sourceUiUniqueId":"","sourceType":"","sourceId":""}},{"name":"7eaa66fa-bd7c-4dda-ac13-4d90b97f05ed.observables","label":"5 - Get Input Parameters for integration workflow V1➛Observables","reference":"sn_ti_observable","reference_display":"Observables","type":"glide_list","base_type":"glide_list","attributes":{"uiType":"glide_list","uiTypeLabel":"List","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"c8dbe2c1-0d0e-4bea-9e10-827ed0cc682e"}},{"name":"86a65bef-64cd-4fcf-8988-26034629c3af.table_name","label":"7 - Update Record➛Integration Capability Execution Table","reference":"sn_sec_cmn_integration_capability_execution","reference_display":"Integration Capability Execution Table","type":"table_name","base_type":"table_name","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"86a65bef-64cd-4fcf-8988-26034629c3af.record","label":"7 - Update Record➛Integration Capability Execution Record","reference":"sn_sec_cmn_integration_capability_execution","reference_display":"Integration Capability Execution Record","type":"reference","base_type":"reference","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"2e9a5e6c-71a3-42de-97b2-9d68825bdc5c.returnval","label":"5➛Return Value","reference_display":"Return Value","type":"string","base_type":"string","attributes":{"pills_draggable_inside_block":"false","pills_draggable_outside_block":"true"}},{"name":"2e9a5e6c-71a3-42de-97b2-9d68825bdc5c.result","label":"5➛Result","reference_display":"Result","type":"string","base_type":"string","attributes":{"pills_draggable_inside_block":"false","pills_draggable_outside_block":"true"}},{"name":"2e9a5e6c-71a3-42de-97b2-9d68825bdc5c.context","label":"5➛Context","reference":"wf_context","reference_display":"Workflow context","type":"reference","base_type":"reference","attributes":{"pills_draggable_inside_block":"false","pills_draggable_outside_block":"true"}},{"name":"2e9a5e6c-71a3-42de-97b2-9d68825bdc5c.state","label":"5➛State","reference_display":"State","type":"string","base_type":"string","attributes":{"pills_draggable_inside_block":"false","pills_draggable_outside_block":"true"}},{"name":"d8a49f10-9452-460d-bd47-be158dbf608a.Record.sys_id","label":"3 - Look Up Record➛Integration Capability Implementation Record➛Sys ID","reference":"","reference_display":"Sys ID","type":"GUID","base_type":"GUID","parent_table_name":"sn_sec_cmn_integration_capability_implementation","column_name":"sys_id"},{"name":"subflow.task.sys_id","label":"Input➛Task➛Sys ID","reference":"","reference_display":"Sys ID","type":"GUID","base_type":"GUID","parent_table_name":"task","column_name":"sys_id"},{"name":"subflow.task.sys_domain","label":"Input➛Task➛Domain","reference":"sys_user_group","reference_display":"Group","type":"domain_id","base_type":"domain_id","parent_table_name":"task","column_name":"sys_domain"},{"name":"subflow.task","label":"Input➛Task","reference":"task","reference_display":"Task","type":"reference","base_type":"reference","column_name":"","attributes":{"uiType":"reference","uiTypeLabel":"Reference","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"274b984a-dcc9-4b89-9463-6671ed4a8573","sourceUiUniqueId":"","sourceType":"","sourceId":""}},{"name":"41732e1c-8b1c-4554-b536-aeca2170f6dd.table_name","label":"4 - Create Record➛Integration Capability Execution Table","reference":"sn_sec_cmn_integration_capability_execution","reference_display":"Integration Capability Execution Table","type":"table_name","base_type":"table_name","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"41732e1c-8b1c-4554-b536-aeca2170f6dd.record","label":"4 - Create Record➛Integration Capability Execution Record","reference":"sn_sec_cmn_integration_capability_execution","reference_display":"Integration Capability Execution Record","type":"reference","base_type":"reference","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"8f6cbdec-d50f-46bc-8fe8-aa35e6b665aa.Record","label":"2 - Look Up Record➛Capability Implementation Record","reference":"sn_sec_cmn_capability_implementation","reference_display":"Capability Implementation Record","type":"reference","base_type":"reference","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"8f6cbdec-d50f-46bc-8fe8-aa35e6b665aa.Table","label":"2 - Look Up Record➛Capability Implementation Table","reference":"sn_sec_cmn_capability_implementation","reference_display":"Capability Implementation Table","type":"table_name","base_type":"table_name","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","filter_table_source":"v_cluster_transaction"}},{"name":"subflow.capability_implementation_execution.capability_implementation.sys_id","label":"Input➛Capability Implementation Execution➛Capability Implementation➛Sys ID","reference":"","reference_display":"Sys ID","type":"GUID","base_type":"GUID","parent_table_name":"sn_sec_cmn_capability_implementation","column_name":"sys_id"},{"name":"d8a49f10-9452-460d-bd47-be158dbf608a.Record","label":"3 - Look Up Record➛Integration Capability Implementation Record","reference":"sn_sec_cmn_integration_capability_implementation","reference_display":"Integration Capability Implementation Record","type":"reference","base_type":"reference","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"d8a49f10-9452-460d-bd47-be158dbf608a.Table","label":"3 - Look Up Record➛Integration Capability Implementation Table","reference":"sn_sec_cmn_integration_capability_implementation","reference_display":"Integration Capability Implementation Table","type":"table_name","base_type":"table_name","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","filter_table_source":"v_cluster_transaction"}},{"name":"8f6cbdec-d50f-46bc-8fe8-aa35e6b665aa.Record.integration.sys_id","label":"2 - Look Up Record➛Capability Implementation Record➛Configuration➛Sys ID","reference":"","reference_display":"Sys ID","type":"GUID","base_type":"GUID","parent_table_name":"sn_sec_core_integration_item","column_name":"sys_id"},{"name":"7eaa66fa-bd7c-4dda-ac13-4d90b97f05ed.observables_csv","label":"5 - Get Input Parameters for integration workflow V1➛Observables CSV","reference_display":"Observables CSV","type":"string","base_type":"string","attributes":{"uiType":"string","uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","pwd2droppable":"true","uiUniqueId":"6f151f65-8bd8-42e6-b1ca-561bbbfbdbe1"}},{"name":"7eaa66fa-bd7c-4dda-ac13-4d90b97f05ed.observables_json","label":"5 - Get Input Parameters for integration workflow V1➛Observables JSON","reference_display":"Observables JSON","type":"string","base_type":"string","attributes":{"uiType":"string","uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","pwd2droppable":"true","uiUniqueId":"25cd636d-e629-432c-97c6-b104d23edc44"}},{"name":"b10abc89-451b-4ea2-a6eb-9721ed3cc54c.Records","label":"9 - Look Up Records➛Integration Capability Execution Records","reference":"sn_sec_cmn_integration_capability_execution","reference_display":"Integration Capability Execution Records","type":"records","base_type":"records","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"b10abc89-451b-4ea2-a6eb-9721ed3cc54c.Table","label":"9 - Look Up Records➛Integration Capability Execution Table","reference":"sn_sec_cmn_integration_capability_execution","reference_display":"Integration Capability Execution Table","type":"table_name","base_type":"table_name","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"b10abc89-451b-4ea2-a6eb-9721ed3cc54c.Count","label":"9 - Look Up Records➛Count","reference_display":"Count","type":"integer","base_type":"integer","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"73cded08-b733-4666-8a79-3945d4dd9fe9.item.state","label":"10 - For Each➛Integration Capability Execution Record➛State","reference":"","reference_display":"State","type":"choice","base_type":"choice","parent_table_name":"sn_sec_cmn_integration_capability_execution","column_name":"state","choices":[{"label":"-- None --","reference":false,"used":false,"image":"","rawLabel":"-- None --","selected":false,"missing":false,"value":""},{"label":"Started","reference":false,"used":false,"image":"","rawLabel":"Started","selected":false,"missing":false,"value":"started","parameters":{"name":"sn_sec_cmn_integration_capability_execution"}},{"label":"Complete","reference":false,"used":false,"image":"","rawLabel":"Complete","selected":false,"missing":false,"value":"complete","parameters":{"name":"sn_sec_cmn_integration_capability_execution"}},{"label":"Error","reference":false,"used":false,"image":"","rawLabel":"Error","selected":false,"missing":false,"value":"error","parameters":{"name":"sn_sec_cmn_integration_capability_execution"}},{"label":"Unknown","reference":false,"used":false,"image":"","rawLabel":"Unknown","selected":false,"missing":false,"value":"unknown","parameters":{"name":"sn_sec_cmn_integration_capability_execution"}},{"label":"Waiting","reference":false,"used":false,"image":"","rawLabel":"Waiting","selected":false,"missing":false,"value":"waiting","parameters":{"name":"sn_sec_cmn_integration_capability_execution"}}]},{"name":"73cded08-b733-4666-8a79-3945d4dd9fe9.item","label":"10 - For Each➛Integration Capability Execution Record","reference":"sn_sec_cmn_integration_capability_execution","reference_display":"Integration Capability Execution Record","type":"reference","base_type":"reference","attributes":{"pills_draggable_inside_block":"true","pills_draggable_outside_block":"false"}},{"name":"8386329c-9852-4068-8b1b-c10399182e04.record","label":"9.1.1➛Integration Capability Execution Record","reference":"sn_sec_cmn_integration_capability_execution","reference_display":"Integration Capability Execution","type":"reference","base_type":"reference","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"8386329c-9852-4068-8b1b-c10399182e04.table_name","label":"9.1.1➛Integration Capability Execution Table","reference":"sn_sec_cmn_integration_capability_execution","reference_display":"Integration Capability Execution","type":"table_name","base_type":"table_name","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"73cded08-b733-4666-8a79-3945d4dd9fe9.item.status_message","label":"10 - For Each➛Integration Capability Execution Record➛Status message","reference":"","reference_display":"Status message","type":"string","base_type":"string","parent_table_name":"sn_sec_cmn_integration_capability_execution","column_name":"status_message"},{"name":"52462a35-32d9-4274-bc30-42251a469cd9.record","label":"13 - Update Record➛Capability Implementation Execution Record","reference":"sn_sec_cmn_capability_implementation_execution","reference_display":"Capability Implementation Execution Record","type":"reference","base_type":"reference","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"52462a35-32d9-4274-bc30-42251a469cd9.table_name","label":"13 - Update Record➛Capability Implementation Execution Table","reference":"sn_sec_cmn_capability_implementation_execution","reference_display":"Capability Implementation Execution Table","type":"table_name","base_type":"table_name","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"subflow.capability_implementation_execution","label":"Input➛Capability Implementation Execution","reference":"sn_sec_cmn_capability_implementation_execution","reference_display":"Capability Implementation Execution","type":"reference","base_type":"reference","column_name":"","attributes":{"uiType":"reference","uiTypeLabel":"Reference","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"1d89343b-4cdf-47db-8608-9db51577d25f","sourceUiUniqueId":"","sourceType":"","sourceId":""}},{"name":"615d0a43-cd8f-41f3-941f-0707bd39fd31.record","label":"9.1.2.1➛Record","reference_display":"Record","type":"document_id","base_type":"document_id","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"615d0a43-cd8f-41f3-941f-0707bd39fd31.table_name","label":"9.1.2.1➛Table","reference_display":"Table","type":"table_name","base_type":"table_name","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"7eaa66fa-bd7c-4dda-ac13-4d90b97f05ed.configuration_items","label":"5 - Get Input Parameters for integration workflow V1➛Configuration Items","reference":"cmdb_ci","reference_display":"Configuration Items","type":"glide_list","base_type":"glide_list","attributes":{"uiType":"glide_list","uiTypeLabel":"List","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"a77b3b10-13b3-4309-a4d9-5eb649e1e7f2"}},{"name":"7eaa66fa-bd7c-4dda-ac13-4d90b97f05ed.configuration_items_json","label":"5 - Get Input Parameters for integration workflow V1➛Configuration Items JSON","reference_display":"Configuration Items JSON","type":"string","base_type":"string","attributes":{"uiType":"string","uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","pwd2droppable":"true","uiUniqueId":"ab1ce42e-cf01-40ca-b76f-2d730bedd64d"}},{"name":"7eaa66fa-bd7c-4dda-ac13-4d90b97f05ed.configuration_items_csv","label":"5 - Get Input Parameters for integration workflow V1➛Configuration Items CSV","reference_display":"Configuration Items CSV","type":"string","base_type":"string","attributes":{"uiType":"string","uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","pwd2droppable":"true","uiUniqueId":"c58c78f2-0dfc-487d-9016-329afbe1a2f0"}},{"name":"7eaa66fa-bd7c-4dda-ac13-4d90b97f05ed.remove_host_isolation","label":"5 - Get Input Parameters for integration workflow V1➛Remove Host Isolation","reference_display":"Remove Host Isolation","type":"boolean","base_type":"boolean","attributes":{"uiType":"boolean","uiTypeLabel":"True/False","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"c18cd971-df1c-4d3d-ad72-0d31e86ab23d"}},{"name":"7eaa66fa-bd7c-4dda-ac13-4d90b97f05ed.sighting_search_id","label":"5 - Get Input Parameters for integration workflow V1➛Sighting Search Id","reference_display":"Sighting Search Id","type":"string","base_type":"string","attributes":{"uiType":"string","uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","pwd2droppable":"true","uiUniqueId":"c7b488a8-8dbd-4da2-92e1-5f528d4db738"}},{"name":"7eaa66fa-bd7c-4dda-ac13-4d90b97f05ed.query","label":"5 - Get Input Parameters for integration workflow V1➛Query","reference_display":"Query","type":"string","base_type":"string","attributes":{"uiType":"string","uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","pwd2droppable":"true","uiUniqueId":"419c050d-1664-4d9c-b8aa-0c418d75c278"}},{"name":"7eaa66fa-bd7c-4dda-ac13-4d90b97f05ed.source","label":"5 - Get Input Parameters for integration workflow V1➛Source","reference_display":"Source","type":"string","base_type":"string","attributes":{"uiType":"string","uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","pwd2droppable":"true","uiUniqueId":"cb7f1060-4a41-4cbb-b1ae-3016c11fad01"}},{"name":"7eaa66fa-bd7c-4dda-ac13-4d90b97f05ed.delete_results","label":"5 - Get Input Parameters for integration workflow V1➛Delete Results","reference_display":"Delete Results","type":"boolean","base_type":"boolean","attributes":{"uiType":"boolean","uiTypeLabel":"True/False","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"5326e148-e20f-4567-ae16-341fa6d5037f"}},{"name":"7eaa66fa-bd7c-4dda-ac13-4d90b97f05ed.email_search_id","label":"5 - Get Input Parameters for integration workflow V1➛Email Search Id","reference_display":"Email Search Id","type":"string","base_type":"string","attributes":{"uiType":"string","uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","pwd2droppable":"true","uiUniqueId":"5bfb2862-c579-4d74-a042-b819986723a2"}},{"name":"7eaa66fa-bd7c-4dda-ac13-4d90b97f05ed.email_search_item","label":"5 - Get Input Parameters for integration workflow V1➛Email Search Item","reference":"sn_sec_cmn_email_search","reference_display":"Email Search Item","type":"reference","base_type":"reference","attributes":{"uiType":"reference","uiTypeLabel":"Reference","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiUniqueId":"845045e0-b2a1-4a0a-b5f8-e856d57f9d2f"}},{"name":"7eaa66fa-bd7c-4dda-ac13-4d90b97f05ed.sighting_search_type","label":"5 - Get Input Parameters for integration workflow V1➛Sighting Search Type","reference_display":"Sighting Search Type","type":"string","base_type":"string","attributes":{"uiType":"string","uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","pwd2droppable":"true","uiUniqueId":"e7ae2e6b-b8a7-46d9-bcf6-edb6c6db46cb"}},{"name":"af1e7f77-8a4a-476b-9163-b9eaa60229b8.Record","label":"12 - Look Up Record➛Capability Implementation Execution Record","reference":"sn_sec_cmn_capability_implementation_execution","reference_display":"Capability Implementation Execution Record","type":"reference","base_type":"reference","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper"}},{"name":"af1e7f77-8a4a-476b-9163-b9eaa60229b8.Table","label":"12 - Look Up Record➛Capability Implementation Execution Table","reference":"sn_sec_cmn_capability_implementation_execution","reference_display":"Capability Implementation Execution Table","type":"table_name","base_type":"table_name","attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","filter_table_source":"v_cluster_transaction"}},{"name":"subflow.capability_implementation_execution.sys_id","label":"Input➛Capability Implementation Execution➛Sys ID","reference":"","reference_display":"Sys ID","type":"GUID","base_type":"GUID","parent_table_name":"sn_sec_cmn_capability_implementation_execution","column_name":"sys_id"},{"name":"52462a35-32d9-4274-bc30-42251a469cd9.record.status_message","label":"13 - Update Record➛Capability Implementation Execution Record➛Status message","reference":"","reference_display":"Status message","type":"string","base_type":"string","parent_table_name":"sn_sec_cmn_capability_implementation_execution","column_name":"status_message"},{"name":"41732e1c-8b1c-4554-b536-aeca2170f6dd.record.parent_capability_execution.sys_id","label":"4 - Create Record➛Integration Capability Execution Record➛Parent capability execution➛Sys ID","reference":"","reference_display":"Sys ID","type":"GUID","base_type":"GUID","parent_table_name":"sn_sec_cmn_integration_capability_execution","column_name":"sys_id"}]</label_cache>
+        <latest_snapshot/>
+        <master_snapshot/>
+        <name>Security Operations DomainTools Iris Investigate V1</name>
+        <natlang/>
+        <outputs/>
+        <pre_compiled>false</pre_compiled>
+        <remote_trigger_id/>
+        <run_as>system</run_as>
+        <run_with_roles/>
+        <sc_callable>false</sc_callable>
+        <show_draft_actions>false</show_draft_actions>
+        <show_triggered_flows>false</show_triggered_flows>
+        <status>draft</status>
+        <sys_class_name>sys_hub_flow</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:33</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>1455b04193c48210524174418bba10ee</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>Security Operations DomainTools Iris Investigate V1</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="DomainTools Iris Investigate" source="x_952688_domaintoo">5d147aa493cc0210524174418bba1073</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_update_name>sys_hub_flow_1455b04193c48210524174418bba10ee</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-29 05:50:53</sys_updated_on>
+        <type>subflow</type>
+    </sys_hub_flow>
+    <sys_translated_text action="delete_multiple" query="documentkey=1455b04193c48210524174418bba10ee"/>
+    <sys_variable_value action="delete_multiple" query="document_key=1455b04193c48210524174418bba10ee"/>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_flow_output_1455b04193c48210524174418bba10ee^id=1455b04193c48210524174418bba10ee"/>
+    <sys_hub_trigger_instance action="delete_multiple" query="flow=1455b04193c48210524174418bba10ee"/>
+    <sys_hub_flow_stage action="delete_multiple" query="flow=1455b04193c48210524174418bba10ee"/>
+    <sys_flow_cat_variable_model action="delete_multiple" query="id=1455b04193c48210524174418bba10ee^sys_idNOT INdc55b04193c48210524174418bba10ee"/>
+    <sys_flow_cat_variable_model action="INSERT_OR_UPDATE">
+        <id>1455b04193c48210524174418bba10ee</id>
+        <name>Security Operations DomainTools Iris Investigate V1</name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:33</sys_created_on>
+        <sys_id>dc55b04193c48210524174418bba10ee</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:33</sys_updated_on>
+    </sys_flow_cat_variable_model>
+    <sys_flow_cat_variable action="delete_multiple" query="flow_catalog_model=dc55b04193c48210524174418bba10ee"/>
+    <sys_hub_flow_input action="delete_multiple" query="model=1455b04193c48210524174418bba10ee^sys_idNOT IN5455b04193c48210524174418bba10f6,9455b04193c48210524174418bba10fe,d055b04193c48210524174418bba10fa,d455f04193c48210524174418bba101b"/>
+    <sys_hub_flow_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=json,uiTypeLabel=JSON,uiUniqueId=f500535d-eeca-4572-9c7c-d169d0bad8cc</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>input_parameters</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="JSON">json</internal_type>
+        <label>Input Parameters</label>
+        <mandatory>false</mandatory>
+        <max_length>4000</max_length>
+        <model display_value="Security Operations DomainTools Iris Investigate V1">1455b04193c48210524174418bba10ee</model>
+        <model_id>1455b04193c48210524174418bba10ee</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_input_1455b04193c48210524174418bba10ee</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:33</sys_created_on>
+        <sys_id>5455b04193c48210524174418bba10f6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:33</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_flow_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=reference,uiTypeLabel=Reference,uiUniqueId=1d89343b-4cdf-47db-8608-9db51577d25f</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table>sn_sec_cmn_capability_implementation_execution</choice_table>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>capability_implementation_execution</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="Reference">reference</internal_type>
+        <label>Capability Implementation Execution</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Security Operations DomainTools Iris Investigate V1">1455b04193c48210524174418bba10ee</model>
+        <model_id>1455b04193c48210524174418bba10ee</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_input_1455b04193c48210524174418bba10ee</name>
+        <next_element/>
+        <order>3</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference display_value="" name="sn_sec_cmn_capability_implementation_execution">sn_sec_cmn_capability_implementation_execution</reference>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:33</sys_created_on>
+        <sys_id>9455b04193c48210524174418bba10fe</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:33</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_flow_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=reference,uiTypeLabel=Reference,uiUniqueId=274b984a-dcc9-4b89-9463-6671ed4a8573</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table>task</choice_table>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>task</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="Reference">reference</internal_type>
+        <label>Task</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Security Operations DomainTools Iris Investigate V1">1455b04193c48210524174418bba10ee</model>
+        <model_id>1455b04193c48210524174418bba10ee</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_input_1455b04193c48210524174418bba10ee</name>
+        <next_element/>
+        <order>2</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference display_value="Task" name="task">task</reference>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:33</sys_created_on>
+        <sys_id>d055b04193c48210524174418bba10fa</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:33</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_flow_input action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=domain_id,uiTypeLabel=Domain ID,uiUniqueId=43fe970f-a369-4063-9cef-c58253fa97f6</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>domain_id</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="">domain_id</internal_type>
+        <label>Domain Id</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Security Operations DomainTools Iris Investigate V1">1455b04193c48210524174418bba10ee</model>
+        <model_id>1455b04193c48210524174418bba10ee</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_input_1455b04193c48210524174418bba10ee</name>
+        <next_element/>
+        <order>4</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_input</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:33</sys_created_on>
+        <sys_id>d455f04193c48210524174418bba101b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:33</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_input>
+    <sys_hub_flow_output action="delete_multiple" query="model=1455b04193c48210524174418bba10ee^sys_idNOT IN5455f04193c48210524174418bba1021,9855f04193c48210524174418bba103f,d455f04193c48210524174418bba1044"/>
+    <sys_hub_flow_output action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=json,uiTypeLabel=JSON,uiUniqueId=12137f07-ab94-4e3d-bd36-6fe73111e0ec</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice>3</choice>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>results</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="JSON">json</internal_type>
+        <label>Results</label>
+        <mandatory>false</mandatory>
+        <max_length>4000</max_length>
+        <model display_value="Security Operations DomainTools Iris Investigate V1">1455b04193c48210524174418bba10ee</model>
+        <model_id>1455b04193c48210524174418bba10ee</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_output_1455b04193c48210524174418bba10ee</name>
+        <next_element/>
+        <order>1</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_output</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>5455f04193c48210524174418bba1021</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_output>
+    <sys_hub_flow_output action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=string,uiTypeLabel=String,uiUniqueId=13d67474-efb5-497e-a970-cfdccc25639a</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice>3</choice>
+        <choice_field/>
+        <choice_table/>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>status_message</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="String">string</internal_type>
+        <label>Status Message</label>
+        <mandatory>false</mandatory>
+        <max_length>8000</max_length>
+        <model display_value="Security Operations DomainTools Iris Investigate V1">1455b04193c48210524174418bba10ee</model>
+        <model_id>1455b04193c48210524174418bba10ee</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_output_1455b04193c48210524174418bba10ee</name>
+        <next_element/>
+        <order>2</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_output</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>9855f04193c48210524174418bba103f</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_output>
+    <sys_hub_flow_output action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <array_denormalized>false</array_denormalized>
+        <attributes>element_mapping_provider=com.glide.flow_design.action.data.FlowDesignVariableMapper,uiType=choice,uiTypeLabel=Choice,uiUniqueId=43309cb5-5639-411c-add4-1d71903deb33</attributes>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice>3</choice>
+        <choice_field>state</choice_field>
+        <choice_table>sn_sec_cmn_capability_implementation_execution</choice_table>
+        <column_label/>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>state</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <help/>
+        <hint/>
+        <internal_type display_value="Choice">choice</internal_type>
+        <label>State</label>
+        <mandatory>false</mandatory>
+        <max_length>32</max_length>
+        <model display_value="Security Operations DomainTools Iris Investigate V1">1455b04193c48210524174418bba10ee</model>
+        <model_id>1455b04193c48210524174418bba10ee</model_id>
+        <model_table>sys_hub_flow</model_table>
+        <name>var__m_sys_hub_flow_output_1455b04193c48210524174418bba10ee</name>
+        <next_element/>
+        <order>3</order>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_hub_flow_output</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>d455f04193c48210524174418bba1044</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_hub_flow_output>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=1455b04193c48210524174418bba10ee"/>
+    <sys_hub_action_instance action="delete_multiple" query="flow=1455b04193c48210524174418bba10ee^sys_idNOT IN2c55f04193c48210524174418bba1096,6055f04193c48210524174418bba10bc,6455f04193c48210524174418bba108d,7c55f04193c48210524174418bba10d7,a055f04193c48210524174418bba1083,a055f04193c48210524174418bba10ae,a455f04193c48210524174418bba10c5,a855f04193c48210524174418bba109c,e855f04193c48210524174418bba10b3"/>
+    <sys_hub_action_instance action="INSERT_OR_UPDATE">
+        <action_inputs/>
+        <action_inputs/>
+        <action_type display_value="Look Up Record">9d09f99587003300663ca1bb36cb0ba3</action_type>
+        <action_type_parent display_value="Look Up Record">b93f42810b30030085c083eb37673a63</action_type_parent>
+        <comment/>
+        <compiled_snapshot>9d09f99587003300663ca1bb36cb0ba3</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Security Operations DomainTools Iris Investigate V1">1455b04193c48210524174418bba10ee</flow>
+        <order>3</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>2c55f04193c48210524174418bba1096</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-29 05:50:53</sys_updated_on>
+        <ui_id>d8a49f10-9452-460d-bd47-be158dbf608a</ui_id>
+    </sys_hub_action_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=2c55f04193c48210524174418bba1096"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_instance</document>
+        <document_key>2c55f04193c48210524174418bba1096</document_key>
+        <order>0</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>2855f04193c48210524174418bba1098</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <value>sn_sec_cmn_integration_capability_implementation</value>
+        <variable display_value="Table">d909f99587003300663ca1bb36cb0ba4</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=2c55f04193c48210524174418bba1096"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>conditions</field>
+        <id>2c55f04193c48210524174418bba1096</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>e055f04193c48210524174418bba1098</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <table>var__m_sys_hub_action_input_9d09f99587003300663ca1bb36cb0ba3</table>
+        <value>integration={{8f6cbdec-d50f-46bc-8fe8-aa35e6b665aa.Record.integration.sys_id}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>table</field>
+        <id>2c55f04193c48210524174418bba1096</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>a455f04193c48210524174418bba1098</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <table>var__m_sys_hub_action_input_9d09f99587003300663ca1bb36cb0ba3</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=2c55f04193c48210524174418bba1096"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=2c55f04193c48210524174418bba1096"/>
+    <sys_hub_action_instance action="INSERT_OR_UPDATE">
+        <action_inputs/>
+        <action_inputs/>
+        <action_type display_value="Look Up Records">43400a1587003300663ca1bb36cb0b4b</action_type>
+        <action_type_parent display_value="Look Up Records">d1c56ec50b30030085c083eb37673a50</action_type_parent>
+        <comment/>
+        <compiled_snapshot>43400a1587003300663ca1bb36cb0b4b</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Security Operations DomainTools Iris Investigate V1">1455b04193c48210524174418bba10ee</flow>
+        <order>9</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:35</sys_created_on>
+        <sys_id>6055f04193c48210524174418bba10bc</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-29 05:50:53</sys_updated_on>
+        <ui_id>b10abc89-451b-4ea2-a6eb-9721ed3cc54c</ui_id>
+    </sys_hub_action_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=6055f04193c48210524174418bba10bc"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_instance</document>
+        <document_key>6055f04193c48210524174418bba10bc</document_key>
+        <order>0</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:35</sys_created_on>
+        <sys_id>2055f04193c48210524174418bba10be</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:35</sys_updated_on>
+        <value>sn_sec_cmn_integration_capability_execution</value>
+        <variable display_value="Table">8f400a1587003300663ca1bb36cb0b4b</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=6055f04193c48210524174418bba10bc"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>conditions</field>
+        <id>6055f04193c48210524174418bba10bc</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:35</sys_created_on>
+        <sys_id>e855f04193c48210524174418bba10bd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:35</sys_updated_on>
+        <table>var__m_sys_hub_action_input_43400a1587003300663ca1bb36cb0b4b</table>
+        <value>parent_capability_execution={{41732e1c-8b1c-4554-b536-aeca2170f6dd.record}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>table</field>
+        <id>6055f04193c48210524174418bba10bc</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:35</sys_created_on>
+        <sys_id>ac55f04193c48210524174418bba10bd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:35</sys_updated_on>
+        <table>var__m_sys_hub_action_input_43400a1587003300663ca1bb36cb0b4b</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=6055f04193c48210524174418bba10bc"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=6055f04193c48210524174418bba10bc"/>
+    <sys_hub_action_instance action="INSERT_OR_UPDATE">
+        <action_inputs/>
+        <action_inputs/>
+        <action_type display_value="Look Up Record">9d09f99587003300663ca1bb36cb0ba3</action_type>
+        <action_type_parent display_value="Look Up Record">b93f42810b30030085c083eb37673a63</action_type_parent>
+        <comment/>
+        <compiled_snapshot>9d09f99587003300663ca1bb36cb0ba3</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Security Operations DomainTools Iris Investigate V1">1455b04193c48210524174418bba10ee</flow>
+        <order>2</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>6455f04193c48210524174418bba108d</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-29 05:50:53</sys_updated_on>
+        <ui_id>8f6cbdec-d50f-46bc-8fe8-aa35e6b665aa</ui_id>
+    </sys_hub_action_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=6455f04193c48210524174418bba108d"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_instance</document>
+        <document_key>6455f04193c48210524174418bba108d</document_key>
+        <order>0</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>a455f04193c48210524174418bba108f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <value>sn_sec_cmn_capability_implementation</value>
+        <variable display_value="Table">d909f99587003300663ca1bb36cb0ba4</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=6455f04193c48210524174418bba108d"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>conditions</field>
+        <id>6455f04193c48210524174418bba108d</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>6055f04193c48210524174418bba108f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <table>var__m_sys_hub_action_input_9d09f99587003300663ca1bb36cb0ba3</table>
+        <value>sys_id={{subflow.capability_implementation_execution.capability_implementation.sys_id}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>table</field>
+        <id>6455f04193c48210524174418bba108d</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>2455f04193c48210524174418bba108f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <table>var__m_sys_hub_action_input_9d09f99587003300663ca1bb36cb0ba3</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=6455f04193c48210524174418bba108d"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=6455f04193c48210524174418bba108d"/>
+    <sys_hub_action_instance action="INSERT_OR_UPDATE">
+        <action_inputs/>
+        <action_inputs/>
+        <action_type display_value="Update Record">f9d01dd2c31332002841b63b12d3aea1</action_type>
+        <action_type_parent display_value="Update Record">baf174c8c3c232002841b63b12d3aee4</action_type_parent>
+        <comment/>
+        <compiled_snapshot>f9d01dd2c31332002841b63b12d3aea1</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Security Operations DomainTools Iris Investigate V1">1455b04193c48210524174418bba10ee</flow>
+        <order>13</order>
+        <parent_ui_id>f4819c8a-ffda-465d-adf3-cb843a8941be</parent_ui_id>
+        <sys_class_name>sys_hub_action_instance</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:35</sys_created_on>
+        <sys_id>7c55f04193c48210524174418bba10d7</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-29 05:50:53</sys_updated_on>
+        <ui_id>52462a35-32d9-4274-bc30-42251a469cd9</ui_id>
+    </sys_hub_action_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=7c55f04193c48210524174418bba10d7"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_instance</document>
+        <document_key>7c55f04193c48210524174418bba10d7</document_key>
+        <order>50</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:35</sys_created_on>
+        <sys_id>3055f04193c48210524174418bba10da</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:35</sys_updated_on>
+        <value>sn_sec_cmn_capability_implementation_execution</value>
+        <variable display_value="Table">b5d01916c31332002841b63b12d3aec9</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_instance</document>
+        <document_key>7c55f04193c48210524174418bba10d7</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:35</sys_created_on>
+        <sys_id>7c55f04193c48210524174418bba10d9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:35</sys_updated_on>
+        <value>state=ERROR^status_message=fd-scripted</value>
+        <variable display_value="Fields">02d01916c31332002841b63b12d3aeee</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=7c55f04193c48210524174418bba10d7"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>record</field>
+        <id>7c55f04193c48210524174418bba10d7</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:35</sys_created_on>
+        <sys_id>f855f04193c48210524174418bba10d9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:35</sys_updated_on>
+        <table>var__m_sys_hub_action_input_f9d01dd2c31332002841b63b12d3aea1</table>
+        <value>{{subflow.capability_implementation_execution}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>table_name</field>
+        <id>7c55f04193c48210524174418bba10d7</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:35</sys_created_on>
+        <sys_id>7455f04193c48210524174418bba10d9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:35</sys_updated_on>
+        <table>var__m_sys_hub_action_input_f9d01dd2c31332002841b63b12d3aea1</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>values</field>
+        <id>7c55f04193c48210524174418bba10d7</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:35</sys_created_on>
+        <sys_id>3855f04193c48210524174418bba10d9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:35</sys_updated_on>
+        <table>var__m_sys_hub_action_input_f9d01dd2c31332002841b63b12d3aea1</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=7c55f04193c48210524174418bba10d7^sys_idNOT IN7c55f04193c48210524174418bba10d8"/>
+    <sys_hub_input_scripts action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <input_name>values</input_name>
+        <instance>7c55f04193c48210524174418bba10d7</instance>
+        <referenced_table>sys_hub_action_instance</referenced_table>
+        <script>{"status_message":{"scriptActive":true,"script":"var statusMessage \u003d fd_data._10_1_1__look_up_record.record.status_message;\nvar workflowContextId \u003d fd_data._10__for_each.item.wf_context.sys_id;\nvar capImplExecLink;\nif(!gs.nil(workflowContextId)){\n     capImplExecLink \u003d \"[code]\u003ca href\u003d\u0027/context_workflow.do?sysparm_stack\u003dno\u0026sysparm_show_all\u003dtrue\u0026sysparm_sys_id\u003d\" + workflowContextId + \"\u0027\u003e\" + fd_data._10__for_each.item.wf_context.name + \"\u003c/a\u003e[/code]\";\n}\nvar message \u003d fd_data._10__for_each.item.status_message;\nif(!gs.nil(capImplExecLink))\n    message \u003d capImplExecLink + \" \" + fd_data._10__for_each.item.status_message;\n  \nif (gs.nil(statusMessage))\n    statusMessage \u003d message;\nelse\n    statusMessage \u003d statusMessage + \"\\n\" + message;\n\nreturn statusMessage;\n","savedValue":""}}</script>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:35</sys_created_on>
+        <sys_id>7c55f04193c48210524174418bba10d8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:35</sys_updated_on>
+    </sys_hub_input_scripts>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=7c55f04193c48210524174418bba10d7"/>
+    <sys_hub_action_instance action="INSERT_OR_UPDATE">
+        <action_inputs/>
+        <action_inputs/>
+        <action_type display_value="Add Worknote Link to Context">fd4a0fb70f003300ecf0cc52ff767e2a</action_type>
+        <action_type_parent display_value="Add Worknote Link to Context">ae790f770f003300ecf0cc52ff767efa</action_type_parent>
+        <comment/>
+        <compiled_snapshot>fd4a0fb70f003300ecf0cc52ff767e2a</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Security Operations DomainTools Iris Investigate V1">1455b04193c48210524174418bba10ee</flow>
+        <order>1</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>a055f04193c48210524174418bba1083</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-29 05:50:53</sys_updated_on>
+        <ui_id>d3dd125e-c85e-4953-8674-87b3147eec7f</ui_id>
+    </sys_hub_action_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=a055f04193c48210524174418bba1083"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_instance</document>
+        <document_key>a055f04193c48210524174418bba1083</document_key>
+        <order>3</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>2c55f04193c48210524174418bba1085</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <value>flow_context_link</value>
+        <variable display_value="Journal Field">ca4a0fb70f003300ecf0cc52ff767e45</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_instance</document>
+        <document_key>a055f04193c48210524174418bba1083</document_key>
+        <order>1</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>ec55f04193c48210524174418bba1085</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <value>sn_sec_cmn_capability_implementation_execution</value>
+        <variable display_value="Table">f14a0fb70f003300ecf0cc52ff767e2c</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=a055f04193c48210524174418bba1083"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>journal_field</field>
+        <id>a055f04193c48210524174418bba1083</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>2455f04193c48210524174418bba1085</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <table>var__m_sys_hub_action_input_fd4a0fb70f003300ecf0cc52ff767e2a</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>record</field>
+        <id>a055f04193c48210524174418bba1083</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>a855f04193c48210524174418bba1085</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <table>var__m_sys_hub_action_input_fd4a0fb70f003300ecf0cc52ff767e2a</table>
+        <value>{{subflow.capability_implementation_execution}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>table</field>
+        <id>a055f04193c48210524174418bba1083</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>e455f04193c48210524174418bba1085</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <table>var__m_sys_hub_action_input_fd4a0fb70f003300ecf0cc52ff767e2a</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=a055f04193c48210524174418bba1083"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=a055f04193c48210524174418bba1083"/>
+    <sys_hub_action_instance action="INSERT_OR_UPDATE">
+        <action_inputs/>
+        <action_inputs/>
+        <action_type display_value="Get Input Parameters for integration workflow V1">69f66f640b15001099b8ea7885673a7c</action_type>
+        <action_type_parent display_value="Get Input Parameters for integration workflow V1">f3d5efe00b15001099b8ea7885673a28</action_type_parent>
+        <comment/>
+        <compiled_snapshot>69f66f640b15001099b8ea7885673a7c</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Security Operations DomainTools Iris Investigate V1">1455b04193c48210524174418bba10ee</flow>
+        <order>5</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>a055f04193c48210524174418bba10ae</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-29 05:50:53</sys_updated_on>
+        <ui_id>7eaa66fa-bd7c-4dda-ac13-4d90b97f05ed</ui_id>
+    </sys_hub_action_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=a055f04193c48210524174418bba10ae"/>
+    <sys_element_mapping action="delete_multiple" query="id=a055f04193c48210524174418bba10ae"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>input_parameters</field>
+        <id>a055f04193c48210524174418bba10ae</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>a455f04193c48210524174418bba10af</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <table>var__m_sys_hub_action_input_69f66f640b15001099b8ea7885673a7c</table>
+        <value>{{subflow.input_parameters}}</value>
+    </sys_element_mapping>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=a055f04193c48210524174418bba10ae"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=a055f04193c48210524174418bba10ae"/>
+    <sys_hub_action_instance action="INSERT_OR_UPDATE">
+        <action_inputs/>
+        <action_inputs/>
+        <action_type display_value="Look Up Record">9d09f99587003300663ca1bb36cb0ba3</action_type>
+        <action_type_parent display_value="Look Up Record">b93f42810b30030085c083eb37673a63</action_type_parent>
+        <comment/>
+        <compiled_snapshot>9d09f99587003300663ca1bb36cb0ba3</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Security Operations DomainTools Iris Investigate V1">1455b04193c48210524174418bba10ee</flow>
+        <order>12</order>
+        <parent_ui_id>f4819c8a-ffda-465d-adf3-cb843a8941be</parent_ui_id>
+        <sys_class_name>sys_hub_action_instance</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:35</sys_created_on>
+        <sys_id>a455f04193c48210524174418bba10c5</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-29 05:50:53</sys_updated_on>
+        <ui_id>af1e7f77-8a4a-476b-9163-b9eaa60229b8</ui_id>
+    </sys_hub_action_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=a455f04193c48210524174418bba10c5"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_instance</document>
+        <document_key>a455f04193c48210524174418bba10c5</document_key>
+        <order>0</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:35</sys_created_on>
+        <sys_id>a055f04193c48210524174418bba10c7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:35</sys_updated_on>
+        <value>sn_sec_cmn_capability_implementation_execution</value>
+        <variable display_value="Table">d909f99587003300663ca1bb36cb0ba4</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=a455f04193c48210524174418bba10c5"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>conditions</field>
+        <id>a455f04193c48210524174418bba10c5</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:35</sys_created_on>
+        <sys_id>6c55f04193c48210524174418bba10c6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:35</sys_updated_on>
+        <table>var__m_sys_hub_action_input_9d09f99587003300663ca1bb36cb0ba3</table>
+        <value>sys_id={{subflow.capability_implementation_execution.sys_id}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>table</field>
+        <id>a455f04193c48210524174418bba10c5</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:35</sys_created_on>
+        <sys_id>2055f04193c48210524174418bba10c7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:35</sys_updated_on>
+        <table>var__m_sys_hub_action_input_9d09f99587003300663ca1bb36cb0ba3</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=a455f04193c48210524174418bba10c5"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=a455f04193c48210524174418bba10c5"/>
+    <sys_hub_action_instance action="INSERT_OR_UPDATE">
+        <action_inputs/>
+        <action_inputs/>
+        <action_type display_value="Create Record">2de05916c31332002841b63b12d3aee1</action_type>
+        <action_type_parent display_value="Create Record">02f0b88cc3c632002841b63b12d3aeff</action_type_parent>
+        <comment/>
+        <compiled_snapshot>2de05916c31332002841b63b12d3aee1</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Security Operations DomainTools Iris Investigate V1">1455b04193c48210524174418bba10ee</flow>
+        <order>4</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>a855f04193c48210524174418bba109c</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-29 05:50:53</sys_updated_on>
+        <ui_id>41732e1c-8b1c-4554-b536-aeca2170f6dd</ui_id>
+    </sys_hub_action_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=a855f04193c48210524174418bba109c"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_instance</document>
+        <document_key>a855f04193c48210524174418bba109c</document_key>
+        <order>0</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>e055f04193c48210524174418bba109e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <value>sn_sec_cmn_integration_capability_execution</value>
+        <variable display_value="Table">61e05916c31332002841b63b12d3aee4</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=a855f04193c48210524174418bba109c"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>table_name</field>
+        <id>a855f04193c48210524174418bba109c</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>ac55f04193c48210524174418bba109d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <table>var__m_sys_hub_action_input_2de05916c31332002841b63b12d3aee1</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>values</field>
+        <id>a855f04193c48210524174418bba109c</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>6055f04193c48210524174418bba109e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <table>var__m_sys_hub_action_input_2de05916c31332002841b63b12d3aee1</table>
+        <value>capability={"display":"Enrich Observable","value":"9ad183640b1003009f66e94685673af4"}^capability_implementation={{d8a49f10-9452-460d-bd47-be158dbf608a.Record}}^task={{subflow.task}}^state=started</value>
+    </sys_element_mapping>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=a855f04193c48210524174418bba109c"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=a855f04193c48210524174418bba109c"/>
+    <sys_hub_action_instance action="INSERT_OR_UPDATE">
+        <action_inputs/>
+        <action_inputs/>
+        <action_type display_value="Update Record">f9d01dd2c31332002841b63b12d3aea1</action_type>
+        <action_type_parent display_value="Update Record">baf174c8c3c232002841b63b12d3aee4</action_type_parent>
+        <comment>Set the state to complete.</comment>
+        <compiled_snapshot>f9d01dd2c31332002841b63b12d3aea1</compiled_snapshot>
+        <display_text/>
+        <flow display_value="Security Operations DomainTools Iris Investigate V1">1455b04193c48210524174418bba10ee</flow>
+        <order>7</order>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_action_instance</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:35</sys_created_on>
+        <sys_id>e855f04193c48210524174418bba10b3</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-29 05:50:53</sys_updated_on>
+        <ui_id>86a65bef-64cd-4fcf-8988-26034629c3af</ui_id>
+    </sys_hub_action_instance>
+    <sys_variable_value action="delete_multiple" query="document_key=e855f04193c48210524174418bba10b3"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_instance</document>
+        <document_key>e855f04193c48210524174418bba10b3</document_key>
+        <order>50</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:35</sys_created_on>
+        <sys_id>2c55f04193c48210524174418bba10b5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:35</sys_updated_on>
+        <value>sn_sec_cmn_integration_capability_execution</value>
+        <variable display_value="Table">b5d01916c31332002841b63b12d3aec9</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_action_instance</document>
+        <document_key>e855f04193c48210524174418bba10b3</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:35</sys_created_on>
+        <sys_id>6855f04193c48210524174418bba10b5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:35</sys_updated_on>
+        <value>state=complete</value>
+        <variable display_value="Fields">02d01916c31332002841b63b12d3aeee</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=e855f04193c48210524174418bba10b3"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>record</field>
+        <id>e855f04193c48210524174418bba10b3</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:35</sys_created_on>
+        <sys_id>e455f04193c48210524174418bba10b5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:35</sys_updated_on>
+        <table>var__m_sys_hub_action_input_f9d01dd2c31332002841b63b12d3aea1</table>
+        <value>{{41732e1c-8b1c-4554-b536-aeca2170f6dd.record}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>table_name</field>
+        <id>e855f04193c48210524174418bba10b3</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:35</sys_created_on>
+        <sys_id>6055f04193c48210524174418bba10b5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:35</sys_updated_on>
+        <table>var__m_sys_hub_action_input_f9d01dd2c31332002841b63b12d3aea1</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>values</field>
+        <id>e855f04193c48210524174418bba10b3</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:35</sys_created_on>
+        <sys_id>2455f04193c48210524174418bba10b5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:35</sys_updated_on>
+        <table>var__m_sys_hub_action_input_f9d01dd2c31332002841b63b12d3aea1</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=e855f04193c48210524174418bba10b3"/>
+    <sys_hub_alias_mapping action="delete_multiple" query="source_id=e855f04193c48210524174418bba10b3"/>
+    <sys_hub_sub_flow_instance action="delete_multiple" query="flow=1455b04193c48210524174418bba10ee"/>
+    <sys_hub_flow_logic action="delete_multiple" query="flow=1455b04193c48210524174418bba10ee^sys_idNOT IN6455f04193c48210524174418bba106f,6855f04193c48210524174418bba106b,a455f04193c48210524174418bba105b,a855f04193c48210524174418bba1063,ec55f04193c48210524174418bba1067"/>
+    <sys_hub_flow_logic action="INSERT_OR_UPDATE">
+        <block display_value="">ac55f04193c48210524174418bba106e</block>
+        <comment/>
+        <connected_to/>
+        <decision_table/>
+        <decision_table_inputs/>
+        <display_text/>
+        <extended_inputs/>
+        <flow display_value="Security Operations DomainTools Iris Investigate V1">1455b04193c48210524174418bba10ee</flow>
+        <flow_variable/>
+        <flow_variables_assigned/>
+        <inputs/>
+        <logic_definition display_value="Assign Subflow Outputs">df4e1945c3e232002841b63b12d3ae3e</logic_definition>
+        <order>14</order>
+        <outputs_assigned>status_message,state</outputs_assigned>
+        <outputs_to_assign/>
+        <outputs_to_assign/>
+        <parent_ui_id>f4819c8a-ffda-465d-adf3-cb843a8941be</parent_ui_id>
+        <sys_class_name>sys_hub_flow_logic</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>6455f04193c48210524174418bba106f</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-29 05:50:53</sys_updated_on>
+        <ui_id>31fac351-f3e8-403e-b7ca-b26422f52421</ui_id>
+        <workflow_inputs/>
+        <workflow_reference/>
+    </sys_hub_flow_logic>
+    <sys_variable_value action="delete_multiple" query="document_key=6455f04193c48210524174418bba106f"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_flow_logic</document>
+        <document_key>6455f04193c48210524174418bba106f</document_key>
+        <order>3</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>e855f04193c48210524174418bba107e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <value>ERROR</value>
+        <variable display_value="State">d455f04193c48210524174418bba1044</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=6455f04193c48210524174418bba106f"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>state</field>
+        <id>6455f04193c48210524174418bba106f</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>6855f04193c48210524174418bba107e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <table>var__m_sys_hub_flow_output_1455b04193c48210524174418bba10ee</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>status_message</field>
+        <id>6455f04193c48210524174418bba106f</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>a455f04193c48210524174418bba107e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <table>var__m_sys_hub_flow_output_1455b04193c48210524174418bba10ee</table>
+        <value>{{52462a35-32d9-4274-bc30-42251a469cd9.record.status_message}}</value>
+    </sys_element_mapping>
+    <sys_hub_flow_logic_ext_input action="delete_multiple" query="model=6455f04193c48210524174418bba106f"/>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=6455f04193c48210524174418bba106f"/>
+    <sys_hub_flow_logic action="INSERT_OR_UPDATE">
+        <block display_value="">a055f04193c48210524174418bba106b</block>
+        <comment>Set the state and status message.</comment>
+        <connected_to/>
+        <decision_table/>
+        <decision_table_inputs/>
+        <display_text/>
+        <extended_inputs/>
+        <flow display_value="Security Operations DomainTools Iris Investigate V1">1455b04193c48210524174418bba10ee</flow>
+        <flow_variable/>
+        <flow_variables_assigned/>
+        <inputs/>
+        <inputs/>
+        <logic_definition display_value="If">af4e1945c3e232002841b63b12d3ae3e</logic_definition>
+        <order>11</order>
+        <outputs_assigned/>
+        <outputs_to_assign/>
+        <parent_ui_id>73cded08-b733-4666-8a79-3945d4dd9fe9</parent_ui_id>
+        <sys_class_name>sys_hub_flow_logic</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>6855f04193c48210524174418bba106b</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-29 05:50:53</sys_updated_on>
+        <ui_id>f4819c8a-ffda-465d-adf3-cb843a8941be</ui_id>
+        <workflow_inputs/>
+        <workflow_reference/>
+    </sys_hub_flow_logic>
+    <sys_variable_value action="delete_multiple" query="document_key=6855f04193c48210524174418bba106b"/>
+    <sys_element_mapping action="delete_multiple" query="id=6855f04193c48210524174418bba106b"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>condition</field>
+        <id>6855f04193c48210524174418bba106b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>2855f04193c48210524174418bba106e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <table>var__m_sys_hub_flow_logic_input_af4e1945c3e232002841b63b12d3ae3e</table>
+        <value>{{73cded08-b733-4666-8a79-3945d4dd9fe9.item.state}}=error</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_flow_output_1455b04193c48210524174418bba10ee^id=6855f04193c48210524174418bba106b"/>
+    <sys_hub_flow_logic_ext_input action="delete_multiple" query="model=6855f04193c48210524174418bba106b"/>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=6855f04193c48210524174418bba106b"/>
+    <sys_hub_flow_logic action="INSERT_OR_UPDATE">
+        <block display_value="">a855f04193c48210524174418bba105a</block>
+        <comment>Call the DomainTools Iris Investigate workflow</comment>
+        <connected_to/>
+        <decision_table/>
+        <decision_table_inputs/>
+        <display_text/>
+        <extended_inputs/>
+        <flow display_value="Security Operations DomainTools Iris Investigate V1">1455b04193c48210524174418bba10ee</flow>
+        <flow_variable/>
+        <flow_variables_assigned/>
+        <inputs/>
+        <logic_definition display_value="Call a Workflow">e6edace2733203006715b45a4cf6a7b2</logic_definition>
+        <order>6</order>
+        <outputs_assigned/>
+        <outputs_to_assign/>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_flow_logic</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>a455f04193c48210524174418bba105b</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-29 05:50:53</sys_updated_on>
+        <ui_id>a77bc3b9-941f-459a-8936-1f55009e98d3</ui_id>
+        <workflow_inputs/>
+        <workflow_inputs/>
+        <workflow_reference display_value="Enrich Observable-DomainTools Iris Investigate">aec7bcc193c48210524174418bba10b4</workflow_reference>
+    </sys_hub_flow_logic>
+    <sys_variable_value action="delete_multiple" query="document_key=a455f04193c48210524174418bba105b"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_flow_logic</document>
+        <document_key>a455f04193c48210524174418bba105b</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>2055f04193c48210524174418bba1061</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <value>1</value>
+        <variable display_value="Wait?">4aa624e8734303006715b45a4cf6a785</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_flow_logic_input_e6edace2733203006715b45a4cf6a7b2^id=a455f04193c48210524174418bba105b"/>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_flow_output_1455b04193c48210524174418bba10ee^id=a455f04193c48210524174418bba105b"/>
+    <sys_element_mapping action="delete_multiple" query="id=a455f04193c48210524174418bba105b"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>domain_id</field>
+        <id>a455f04193c48210524174418bba105b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-29 05:49:19</sys_created_on>
+        <sys_id>7a09bc599384c210524174418bba10fb</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-29 05:49:19</sys_updated_on>
+        <table>var__m_var_dictionary_aec7bcc193c48210524174418bba10b4</table>
+        <value>{{subflow.domain_id}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>domain_id</field>
+        <id>a455f04193c48210524174418bba105b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>a055f04193c48210524174418bba1062</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <table>var__m_var_dictionary_b88b2de70b420300263a089b37673a71</table>
+        <value>{{subflow.domain_id}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>implementation_id</field>
+        <id>a455f04193c48210524174418bba105b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-29 05:45:02</sys_created_on>
+        <sys_id>4c18f8199384c210524174418bba10ae</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-29 05:45:02</sys_updated_on>
+        <table>var__m_var_dictionary_aec7bcc193c48210524174418bba10b4</table>
+        <value>{{d8a49f10-9452-460d-bd47-be158dbf608a.Record.sys_id}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>implementation_id</field>
+        <id>a455f04193c48210524174418bba105b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>ec55f04193c48210524174418bba1061</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <table>var__m_var_dictionary_b88b2de70b420300263a089b37673a71</table>
+        <value>{{d8a49f10-9452-460d-bd47-be158dbf608a.Record.sys_id}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>observable_ids</field>
+        <id>a455f04193c48210524174418bba105b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-29 05:45:02</sys_created_on>
+        <sys_id>0418f8199384c210524174418bba10af</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-29 05:45:02</sys_updated_on>
+        <table>var__m_var_dictionary_aec7bcc193c48210524174418bba10b4</table>
+        <value>{{7eaa66fa-bd7c-4dda-ac13-4d90b97f05ed.observables_csv}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>observable_ids</field>
+        <id>a455f04193c48210524174418bba105b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>6455f04193c48210524174418bba1062</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <table>var__m_var_dictionary_b88b2de70b420300263a089b37673a71</table>
+        <value>{{7eaa66fa-bd7c-4dda-ac13-4d90b97f05ed.observables_csv}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>parent_execution_id</field>
+        <id>a455f04193c48210524174418bba105b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-29 05:47:46</sys_created_on>
+        <sys_id>1cb838599384c210524174418bba1066</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-29 05:50:53</sys_updated_on>
+        <table>var__m_var_dictionary_aec7bcc193c48210524174418bba10b4</table>
+        <value>{{41732e1c-8b1c-4554-b536-aeca2170f6dd.record.sys_id}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>parent_execution_id</field>
+        <id>a455f04193c48210524174418bba105b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>e855f04193c48210524174418bba1062</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <table>var__m_var_dictionary_b88b2de70b420300263a089b37673a71</table>
+        <value>{{41732e1c-8b1c-4554-b536-aeca2170f6dd.record.sys_id}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>task_sys_id</field>
+        <id>a455f04193c48210524174418bba105b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>2855f04193c48210524174418bba1062</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <table>var__m_var_dictionary_b88b2de70b420300263a089b37673a71</table>
+        <value>{{subflow.task.sys_id}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>task_sys_id</field>
+        <id>a455f04193c48210524174418bba105b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-29 05:47:46</sys_created_on>
+        <sys_id>58b838599384c210524174418bba1066</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-29 05:47:46</sys_updated_on>
+        <table>var__m_var_dictionary_aec7bcc193c48210524174418bba10b4</table>
+        <value>{{subflow.task.sys_id}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>wait</field>
+        <id>a455f04193c48210524174418bba105b</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>a855f04193c48210524174418bba1060</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <table>var__m_sys_hub_flow_logic_input_e6edace2733203006715b45a4cf6a7b2</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_hub_flow_logic_ext_input action="delete_multiple" query="model=a455f04193c48210524174418bba105b"/>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=a455f04193c48210524174418bba105b"/>
+    <sys_hub_flow_logic action="INSERT_OR_UPDATE">
+        <block display_value="">e055f04193c48210524174418bba1063</block>
+        <comment/>
+        <connected_to/>
+        <decision_table/>
+        <decision_table_inputs/>
+        <display_text/>
+        <extended_inputs/>
+        <flow display_value="Security Operations DomainTools Iris Investigate V1">1455b04193c48210524174418bba10ee</flow>
+        <flow_variable/>
+        <flow_variables_assigned/>
+        <inputs/>
+        <logic_definition display_value="Assign Subflow Outputs">df4e1945c3e232002841b63b12d3ae3e</logic_definition>
+        <order>8</order>
+        <outputs_assigned>status_message,state</outputs_assigned>
+        <outputs_to_assign/>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_flow_logic</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>a855f04193c48210524174418bba1063</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-29 05:50:53</sys_updated_on>
+        <ui_id>85f00040-50a1-47e1-8738-d1cfd0b1a5f0</ui_id>
+        <workflow_inputs/>
+        <workflow_reference/>
+    </sys_hub_flow_logic>
+    <sys_variable_value action="delete_multiple" query="document_key=a855f04193c48210524174418bba1063"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_flow_logic</document>
+        <document_key>a855f04193c48210524174418bba1063</document_key>
+        <order>3</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>6055f04193c48210524174418bba1067</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <value>COMPLETE</value>
+        <variable display_value="State">d455f04193c48210524174418bba1044</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_hub_flow_logic</document>
+        <document_key>a855f04193c48210524174418bba1063</document_key>
+        <order>2</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>ac55f04193c48210524174418bba1066</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <value>Completed successful call to RiskIQ WHOIS workflow.</value>
+        <variable display_value="Status Message">9855f04193c48210524174418bba103f</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_flow_output_1455b04193c48210524174418bba10ee^id=a855f04193c48210524174418bba1063"/>
+    <sys_hub_flow_logic_ext_input action="delete_multiple" query="model=a855f04193c48210524174418bba1063"/>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=a855f04193c48210524174418bba1063"/>
+    <sys_hub_flow_logic action="INSERT_OR_UPDATE">
+        <block display_value="">2855f04193c48210524174418bba1067</block>
+        <comment>Look for errors in the WF instances that ran.</comment>
+        <connected_to/>
+        <decision_table/>
+        <decision_table_inputs/>
+        <display_text/>
+        <extended_inputs/>
+        <flow display_value="Security Operations DomainTools Iris Investigate V1">1455b04193c48210524174418bba10ee</flow>
+        <flow_variable/>
+        <flow_variables_assigned/>
+        <inputs/>
+        <inputs/>
+        <logic_definition display_value="For Each">098e1dc5c3e232002841b63b12d3ae33</logic_definition>
+        <order>10</order>
+        <outputs_assigned/>
+        <outputs_to_assign/>
+        <parent_ui_id/>
+        <sys_class_name>sys_hub_flow_logic</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>ec55f04193c48210524174418bba1067</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-29 05:50:53</sys_updated_on>
+        <ui_id>73cded08-b733-4666-8a79-3945d4dd9fe9</ui_id>
+        <workflow_inputs/>
+        <workflow_reference/>
+    </sys_hub_flow_logic>
+    <sys_variable_value action="delete_multiple" query="document_key=ec55f04193c48210524174418bba1067"/>
+    <sys_element_mapping action="delete_multiple" query="id=ec55f04193c48210524174418bba1067"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>items</field>
+        <id>ec55f04193c48210524174418bba1067</id>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>2c55f04193c48210524174418bba106a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <table>var__m_sys_hub_flow_logic_input_098e1dc5c3e232002841b63b12d3ae33</table>
+        <value>{{b10abc89-451b-4ea2-a6eb-9721ed3cc54c.Records}}</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_sys_hub_flow_output_1455b04193c48210524174418bba10ee^id=ec55f04193c48210524174418bba1067"/>
+    <sys_hub_flow_logic_ext_input action="delete_multiple" query="model=ec55f04193c48210524174418bba1067"/>
+    <sys_hub_input_scripts action="delete_multiple" query="instance=ec55f04193c48210524174418bba1067"/>
+    <sys_hub_pill_compound action="delete_multiple" query="attached_to=1455b04193c48210524174418bba10ee"/>
+    <sys_hub_flow_variable action="delete_multiple" query="model=1455b04193c48210524174418bba10ee"/>
+    <sys_documentation action="delete_multiple" query="name=var__m_sys_hub_flow_input_1455b04193c48210524174418bba10ee^sys_idNOT IN1455b04193c48210524174418bba10f9,1855f04193c48210524174418bba101a,1c55f04193c48210524174418bba101d,d455b04193c48210524174418bba10fd"/>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>input_parameters</element>
+        <help/>
+        <hint/>
+        <label>Input Parameters</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_1455b04193c48210524174418bba10ee</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:33</sys_created_on>
+        <sys_id>1455b04193c48210524174418bba10f9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="DomainTools Iris Investigate" source="x_952688_domaintoo">5d147aa493cc0210524174418bba1073</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:33</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>capability_implementation_execution</element>
+        <help/>
+        <hint/>
+        <label>Capability Implementation Execution</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_1455b04193c48210524174418bba10ee</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:33</sys_created_on>
+        <sys_id>1855f04193c48210524174418bba101a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="DomainTools Iris Investigate" source="x_952688_domaintoo">5d147aa493cc0210524174418bba1073</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:33</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>domain_id</element>
+        <help/>
+        <hint/>
+        <label>Domain Id</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_1455b04193c48210524174418bba10ee</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:33</sys_created_on>
+        <sys_id>1c55f04193c48210524174418bba101d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="DomainTools Iris Investigate" source="x_952688_domaintoo">5d147aa493cc0210524174418bba1073</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:33</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>task</element>
+        <help/>
+        <hint/>
+        <label>Task</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_input_1455b04193c48210524174418bba10ee</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:33</sys_created_on>
+        <sys_id>d455b04193c48210524174418bba10fd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="DomainTools Iris Investigate" source="x_952688_domaintoo">5d147aa493cc0210524174418bba1073</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:33</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_input_1455b04193c48210524174418bba10ee"/>
+    <sys_documentation action="delete_multiple" query="name=var__m_sys_hub_flow_output_1455b04193c48210524174418bba10ee^sys_idNOT IN1855f04193c48210524174418bba1043,5c55f04193c48210524174418bba1025,ec55f04193c48210524174418bba104a"/>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>status_message</element>
+        <help/>
+        <hint/>
+        <label>Status Message</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_output_1455b04193c48210524174418bba10ee</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>1855f04193c48210524174418bba1043</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="DomainTools Iris Investigate" source="x_952688_domaintoo">5d147aa493cc0210524174418bba1073</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>results</element>
+        <help/>
+        <hint/>
+        <label>Results</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_output_1455b04193c48210524174418bba10ee</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>5c55f04193c48210524174418bba1025</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="DomainTools Iris Investigate" source="x_952688_domaintoo">5d147aa493cc0210524174418bba1073</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_documentation action="INSERT_OR_UPDATE">
+        <element>state</element>
+        <help/>
+        <hint/>
+        <label>State</label>
+        <language>en</language>
+        <name>var__m_sys_hub_flow_output_1455b04193c48210524174418bba10ee</name>
+        <plural/>
+        <sys_class_name>sys_documentation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+        <sys_id>ec55f04193c48210524174418bba104a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="DomainTools Iris Investigate" source="x_952688_domaintoo">5d147aa493cc0210524174418bba1073</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+        <url/>
+        <url_target/>
+    </sys_documentation>
+    <sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_output_1455b04193c48210524174418bba10ee^sys_idNOT IN1055f04193c48210524174418bba1046,d455f04193c48210524174418bba1046,9c55f04193c48210524174418bba1046,5455f04193c48210524174418bba1047,1c55f04193c48210524174418bba1047,d055f04193c48210524174418bba1048"/>
+    <sys_choice field="state" table="var__m_sys_hub_flow_output_1455b04193c48210524174418bba10ee">
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>state</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Queued</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_output_1455b04193c48210524174418bba10ee</name>
+            <sequence>1</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>1055f04193c48210524174418bba1046</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+            <value>QUEUED</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>state</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>In Progress</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_output_1455b04193c48210524174418bba10ee</name>
+            <sequence>2</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>d455f04193c48210524174418bba1046</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+            <value>IN_PROGRESS</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>state</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Waiting</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_output_1455b04193c48210524174418bba10ee</name>
+            <sequence>3</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>9c55f04193c48210524174418bba1046</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+            <value>WAITING</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>state</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Complete</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_output_1455b04193c48210524174418bba10ee</name>
+            <sequence>4</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>5455f04193c48210524174418bba1047</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+            <value>COMPLETE</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>state</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Error</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_output_1455b04193c48210524174418bba10ee</name>
+            <sequence>5</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>1c55f04193c48210524174418bba1047</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+            <value>ERROR</value>
+        </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>state</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Cancelled</label>
+            <language>en</language>
+            <name>var__m_sys_hub_flow_output_1455b04193c48210524174418bba10ee</name>
+            <sequence>6</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2024-01-28 10:54:34</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>d055f04193c48210524174418bba1048</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2024-01-28 10:54:34</sys_updated_on>
+            <value>CANCELLED</value>
+        </sys_choice>
+    </sys_choice>
+    <sys_flow_trigger_plan action="delete_multiple" query="plan_id=1455b04193c48210524174418bba10ee"/>
+    <sys_flow_subflow_plan action="delete_multiple" query="plan_id=1455b04193c48210524174418bba10ee"/>
+</record_update>

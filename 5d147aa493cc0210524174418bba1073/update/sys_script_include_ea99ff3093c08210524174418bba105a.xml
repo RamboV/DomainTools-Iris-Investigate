@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_952688_domaintoo.DomainToolsConfiguration</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>DomainToolsConfiguration</name>
+        <script><![CDATA[var DomainToolsConfiguration = Class.create();
+DomainToolsConfiguration.prototype = {
+    initialize: function() {
+    },
+	
+	getConfigurationByIntegId : function(integrationId) {
+		gs.info("I am here");
+		var config = {
+			userName : '',
+			apiKey : ''
+		};
+		var c = new GlideRecord("sn_sec_core_integration_item_config");
+		c.addQuery("integration", integrationId);
+		c.addQuery('name', 'apiKey').addOrCondition('name', 'userName');
+		c.query();
+		while (c.next()) {
+			if (c.getValue('name') == 'apiKey')				
+				config.apiKey = c.sys_id + '';
+			if (c.getValue('name') == 'userName')
+				config.userName = c.sys_id + '';     
+		}
+		return config;
+	},
+
+    type: 'DomainToolsConfiguration'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 06:38:37</sys_created_on>
+        <sys_id>ea99ff3093c08210524174418bba105a</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>DomainToolsConfiguration</sys_name>
+        <sys_package display_value="DomainTools Iris Investigate" source="x_952688_domaintoo">5d147aa493cc0210524174418bba1073</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_update_name>sys_script_include_ea99ff3093c08210524174418bba105a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 07:02:04</sys_updated_on>
+    </sys_script_include>
+</record_update>

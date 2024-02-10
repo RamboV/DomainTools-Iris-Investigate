@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_hub_flow">
+    <sys_hub_flow action="DELETE">
+        <access>public</access>
+        <acls/>
+        <active>false</active>
+        <annotation/>
+        <callable_by_client_api>false</callable_by_client_api>
+        <category/>
+        <compiler_build/>
+        <copied_from/>
+        <copied_from_name/>
+        <description/>
+        <internal_name>testing</internal_name>
+        <label_cache>[]</label_cache>
+        <latest_snapshot/>
+        <master_snapshot/>
+        <name>testing</name>
+        <natlang/>
+        <outputs/>
+        <pre_compiled>false</pre_compiled>
+        <remote_trigger_id/>
+        <run_as>user</run_as>
+        <run_with_roles/>
+        <sc_callable>false</sc_callable>
+        <show_draft_actions>false</show_draft_actions>
+        <show_triggered_flows>false</show_triggered_flows>
+        <status>draft</status>
+        <sys_class_name>sys_hub_flow</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-02-01 08:22:50</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>05f8f4d293c00210524174418bba101c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>testing</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="DomainTools Iris Investigate" source="x_952688_domaintoo">5d147aa493cc0210524174418bba1073</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_update_name>sys_hub_flow_05f8f4d293c00210524174418bba101c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-02-01 08:22:50</sys_updated_on>
+        <type>flow</type>
+    </sys_hub_flow>
+    <sys_translated_text action="DELETE" query="documentkey=05f8f4d293c00210524174418bba101c"/>
+    <sys_variable_value action="DELETE" query="document_key=05f8f4d293c00210524174418bba101c"/>
+    <sys_hub_trigger_instance action="DELETE" query="flow=05f8f4d293c00210524174418bba101c"/>
+    <sys_hub_flow_stage action="DELETE" query="flow=05f8f4d293c00210524174418bba101c"/>
+    <sys_flow_cat_variable_model action="DELETE" query="id=05f8f4d293c00210524174418bba101c^sys_idNOT INc1f8f4d293c00210524174418bba101e"/>
+    <sys_flow_cat_variable_model action="DELETE">
+        <id>05f8f4d293c00210524174418bba101c</id>
+        <name>testing</name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-02-01 08:22:50</sys_created_on>
+        <sys_id>c1f8f4d293c00210524174418bba101e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_scope/>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-02-01 08:22:50</sys_updated_on>
+    </sys_flow_cat_variable_model>
+    <sys_flow_cat_variable action="DELETE" query="flow_catalog_model=c1f8f4d293c00210524174418bba101e"/>
+    <sys_hub_flow_input action="DELETE" query="model=05f8f4d293c00210524174418bba101c"/>
+    <sys_hub_flow_output action="DELETE" query="model=05f8f4d293c00210524174418bba101c"/>
+    <sys_hub_alias_mapping action="DELETE" query="source_id=05f8f4d293c00210524174418bba101c"/>
+    <sys_hub_action_instance action="DELETE" query="flow=05f8f4d293c00210524174418bba101c"/>
+    <sys_hub_sub_flow_instance action="DELETE" query="flow=05f8f4d293c00210524174418bba101c"/>
+    <sys_hub_flow_logic action="DELETE" query="flow=05f8f4d293c00210524174418bba101c"/>
+    <sys_hub_pill_compound action="DELETE" query="attached_to=05f8f4d293c00210524174418bba101c"/>
+    <sys_hub_flow_variable action="DELETE" query="model=05f8f4d293c00210524174418bba101c"/>
+    <sys_documentation action="DELETE" query="name=var__m_sys_hub_flow_input_05f8f4d293c00210524174418bba101c"/>
+    <sys_choice action="DELETE" query="name=var__m_sys_hub_flow_input_05f8f4d293c00210524174418bba101c"/>
+    <sys_documentation action="DELETE" query="name=var__m_sys_hub_flow_output_05f8f4d293c00210524174418bba101c"/>
+    <sys_choice action="DELETE" query="name=var__m_sys_hub_flow_output_05f8f4d293c00210524174418bba101c"/>
+    <sys_flow_trigger_plan action="DELETE" query="plan_id=05f8f4d293c00210524174418bba101c"/>
+    <sys_flow_subflow_plan action="DELETE" query="plan_id=05f8f4d293c00210524174418bba101c"/>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</application>
+        <file_path/>
+        <instance_id>3bcc33a11be275501024eb9b2d4bcbd2</instance_id>
+        <instance_name>dev214094</instance_name>
+        <name>sys_hub_flow_05f8f4d293c00210524174418bba101c</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_hub_flow"><sys_hub_flow action="INSERT_OR_UPDATE"><access>public</access><acls/><active>false</active><annotation/><callable_by_client_api>false</callable_by_client_api><category/><compiler_build/><copied_from/><copied_from_name/><description/><internal_name>testing</internal_name><label_cache>[]</label_cache><latest_snapshot/><master_snapshot/><name>testing</name><natlang/><outputs/><pre_compiled>false</pre_compiled><remote_trigger_id/><run_as>user</run_as><run_with_roles/><sc_callable>false</sc_callable><show_draft_actions>false</show_draft_actions><show_triggered_flows>false</show_triggered_flows><status>draft</status><sys_class_name>sys_hub_flow</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2024-02-01 08:22:50</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>05f8f4d293c00210524174418bba101c</sys_id><sys_mod_count>0</sys_mod_count><sys_name>testing</sys_name><sys_overrides/><sys_package display_value="DomainTools Iris Investigate" source="x_952688_domaintoo">5d147aa493cc0210524174418bba1073</sys_package><sys_policy/><sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope><sys_update_name>sys_hub_flow_05f8f4d293c00210524174418bba101c</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2024-02-01 08:22:50</sys_updated_on><type>flow</type></sys_hub_flow><sys_translated_text action="delete_multiple" query="documentkey=05f8f4d293c00210524174418bba101c"/><sys_variable_value action="delete_multiple" query="document_key=05f8f4d293c00210524174418bba101c"/><sys_hub_trigger_instance action="delete_multiple" query="flow=05f8f4d293c00210524174418bba101c"/><sys_hub_flow_stage action="delete_multiple" query="flow=05f8f4d293c00210524174418bba101c"/><sys_flow_cat_variable_model action="delete_multiple" query="id=05f8f4d293c00210524174418bba101c^sys_idNOT INc1f8f4d293c00210524174418bba101e"/><sys_flow_cat_variable_model action="INSERT_OR_UPDATE"><id>05f8f4d293c00210524174418bba101c</id><name>testing</name><sys_created_by>admin</sys_created_by><sys_created_on>2024-02-01 08:22:50</sys_created_on><sys_id>c1f8f4d293c00210524174418bba101e</sys_id><sys_mod_count>0</sys_mod_count><sys_scope/><sys_updated_by>admin</sys_updated_by><sys_updated_on>2024-02-01 08:22:50</sys_updated_on></sys_flow_cat_variable_model><sys_flow_cat_variable action="delete_multiple" query="flow_catalog_model=c1f8f4d293c00210524174418bba101e"/><sys_hub_flow_input action="delete_multiple" query="model=05f8f4d293c00210524174418bba101c"/><sys_hub_flow_output action="delete_multiple" query="model=05f8f4d293c00210524174418bba101c"/><sys_hub_alias_mapping action="delete_multiple" query="source_id=05f8f4d293c00210524174418bba101c"/><sys_hub_action_instance action="delete_multiple" query="flow=05f8f4d293c00210524174418bba101c"/><sys_hub_sub_flow_instance action="delete_multiple" query="flow=05f8f4d293c00210524174418bba101c"/><sys_hub_flow_logic action="delete_multiple" query="flow=05f8f4d293c00210524174418bba101c"/><sys_hub_pill_compound action="delete_multiple" query="attached_to=05f8f4d293c00210524174418bba101c"/><sys_hub_flow_variable action="delete_multiple" query="model=05f8f4d293c00210524174418bba101c"/><sys_documentation action="delete_multiple" query="name=var__m_sys_hub_flow_input_05f8f4d293c00210524174418bba101c"/><sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_input_05f8f4d293c00210524174418bba101c"/><sys_documentation action="delete_multiple" query="name=var__m_sys_hub_flow_output_05f8f4d293c00210524174418bba101c"/><sys_choice action="delete_multiple" query="name=var__m_sys_hub_flow_output_05f8f4d293c00210524174418bba101c"/><sys_flow_trigger_plan action="delete_multiple" query="plan_id=05f8f4d293c00210524174418bba101c"/><sys_flow_subflow_plan action="delete_multiple" query="plan_id=05f8f4d293c00210524174418bba101c"/></record_update>]]></payload>
+        <payload_hash>-204428535</payload_hash>
+        <record_name>testing</record_name>
+        <reverted_from/>
+        <source>1d14fe2893cc0210524174418bba104e</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-02-01 08:22:51</sys_created_on>
+        <sys_id>cdf8f4d293c00210524174418bba1024</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>18d63c377de0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-02-01 08:22:51</sys_updated_on>
+        <type>Flow</type>
+        <update_guid>05f8f4d284c00210102158fde988ef24</update_guid>
+        <update_guid_history>05f8f4d284c00210102158fde988ef24:-204428535</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-02-01 08:32:35</sys_created_on>
+        <sys_db_object display_value="" name="sys_hub_flow">sys_hub_flow</sys_db_object>
+        <sys_id>110f7a2ef57146c6900e7c666376f481</sys_id>
+        <sys_metadata>05f8f4d293c00210524174418bba101c</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>testing</sys_name>
+        <sys_package display_value="DomainTools Iris Investigate" source="x_952688_domaintoo">5d147aa493cc0210524174418bba1073</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_scope_delete display_value="">36ea77e8e3fc4b9e9118049dcaafad04</sys_scope_delete>
+        <sys_update_name>sys_hub_flow_05f8f4d293c00210524174418bba101c</sys_update_name>
+        <sys_update_version display_value="sys_hub_flow_05f8f4d293c00210524174418bba101c">cdf8f4d293c00210524174418bba1024</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-02-01 08:32:35</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

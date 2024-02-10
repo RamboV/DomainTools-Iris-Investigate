@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_sec_core_integration_item_config">
+    <sn_sec_core_integration_item_config action="INSERT_OR_UPDATE">
+        <elem_type>string</elem_type>
+        <help_text/>
+        <integration display_value="DomainTools Iris Investigate">a905373c93808210524174418bba10b6</integration>
+        <label>DomainTools Username</label>
+        <mandatory>true</mandatory>
+        <name>userName</name>
+        <order>80</order>
+        <password_value/>
+        <sys_class_name>sn_sec_core_integration_item_config</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 06:28:49</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>226833b893808210524174418bba1079</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>userName</sys_name>
+        <sys_package display_value="DomainTools Iris Investigate" source="x_952688_domaintoo">5d147aa493cc0210524174418bba1073</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_update_name>sn_sec_core_integration_item_config_226833b893808210524174418bba1079</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 06:41:07</sys_updated_on>
+        <type/>
+        <value>loginsoft_integration_dev</value>
+    </sn_sec_core_integration_item_config>
+</record_update>

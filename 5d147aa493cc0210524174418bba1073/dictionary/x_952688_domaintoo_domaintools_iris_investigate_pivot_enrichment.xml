@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="ea812cc993448210524174418bba10ae" label="DomainTools Iris Investigate Pivot Enrichment" max_length="40" name="x_952688_domaintoo_domaintools_iris_investigate_pivot_enrichment" type="collection">
+        <element label="Domain" max_length="500" name="domain" type="string"/>
+        <element label="Id" max_length="1000" name="id" type="string"/>
+        <element label="Pivot By" max_length="100" name="pivot_by" type="string"/>
+        <element label="Pivot Value" max_length="1000" name="pivot_value" type="string"/>
+        <element label="Risk Score" max_length="40" name="risk_score" type="integer"/>
+    </element>
+</database>

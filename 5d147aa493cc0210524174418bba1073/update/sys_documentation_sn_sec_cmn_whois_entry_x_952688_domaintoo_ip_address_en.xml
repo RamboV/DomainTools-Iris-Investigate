@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="x_952688_domaintoo_ip_address" label="IP Address" language="en" table="sn_sec_cmn_whois_entry">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>x_952688_domaintoo_ip_address</element>
+            <help/>
+            <hint/>
+            <label>IP Address</label>
+            <language>en</language>
+            <name>sn_sec_cmn_whois_entry</name>
+            <plural>IP Address</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2024-01-30 07:21:27</sys_created_on>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>IP Address</sys_name>
+            <sys_package display_value="DomainTools Iris Investigate" source="x_952688_domaintoo">5d147aa493cc0210524174418bba1073</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+            <sys_update_name>sys_documentation_sn_sec_cmn_whois_entry_x_952688_domaintoo_ip_address_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2024-01-30 07:21:27</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

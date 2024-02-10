@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_module">
+    <sys_ui_module action="DELETE">
+        <active>true</active>
+        <application display_value="Domain Tools ">772cc44593048210524174418bba10c9</application>
+        <filter/>
+        <name>DomainTools Iris Investigate Pivot Enrichments</name>
+        <order/>
+        <path/>
+        <path_relative_to_root>false</path_relative_to_root>
+        <roles>x_952688_domaintoo.domaintools_iris_investigate_pivot_enrichment_user</roles>
+        <sys_class_name>sys_ui_module</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 07:54:51</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>4c3cc44593048210524174418bba10cb</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>DomainTools Iris Investigate Pivot Enrichments</sys_name>
+        <sys_package display_value="DomainTools Iris Investigate" source="x_952688_domaintoo">5d147aa493cc0210524174418bba1073</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_update_name>sys_ui_module_4c3cc44593048210524174418bba10cb</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 07:54:51</sys_updated_on>
+        <table>x_952688_domaintoo_domaintools_iris_investigate_pivot_enrichment</table>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+    </sys_ui_module>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</application>
+        <file_path/>
+        <instance_id>3bcc33a11be275501024eb9b2d4bcbd2</instance_id>
+        <instance_name>dev214094</instance_name>
+        <name>sys_ui_module_4c3cc44593048210524174418bba10cb</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_ui_module"><sys_ui_module action="INSERT_OR_UPDATE"><active>true</active><application display_value="Domain Tools ">772cc44593048210524174418bba10c9</application><filter/><name>DomainTools Iris Investigate Pivot Enrichments</name><order/><path/><path_relative_to_root>false</path_relative_to_root><roles>x_952688_domaintoo.domaintools_iris_investigate_pivot_enrichment_user</roles><sys_class_name>sys_ui_module</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2024-01-28 07:54:51</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>4c3cc44593048210524174418bba10cb</sys_id><sys_mod_count>0</sys_mod_count><sys_name>DomainTools Iris Investigate Pivot Enrichments</sys_name><sys_package display_value="DomainTools Iris Investigate" source="x_952688_domaintoo">5d147aa493cc0210524174418bba1073</sys_package><sys_policy/><sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope><sys_update_name>sys_ui_module_4c3cc44593048210524174418bba10cb</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2024-01-28 07:54:51</sys_updated_on><table>x_952688_domaintoo_domaintools_iris_investigate_pivot_enrichment</table><uncancelable>false</uncancelable><view_name/></sys_ui_module></record_update>]]></payload>
+        <payload_hash>738319856</payload_hash>
+        <record_name>DomainTools Iris Investigate Pivot Enrichments</record_name>
+        <reverted_from/>
+        <source>1d14fe2893cc0210524174418bba104e</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 07:54:51</sys_created_on>
+        <sys_id>8c3cc44593048210524174418bba10cd</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>18d4f1067060000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 07:54:51</sys_updated_on>
+        <type>Module</type>
+        <update_guid>c03cc4452b048210048c53b82a69c7cd</update_guid>
+        <update_guid_history>c03cc4452b048210048c53b82a69c7cd:738319856</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 09:27:53</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_module">sys_ui_module</sys_db_object>
+        <sys_id>209dbd6a39a24af8a8eb380a6f36bd10</sys_id>
+        <sys_metadata>4c3cc44593048210524174418bba10cb</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>DomainTools Iris Investigate Pivot Enrichments</sys_name>
+        <sys_package display_value="DomainTools Iris Investigate" source="x_952688_domaintoo">5d147aa493cc0210524174418bba1073</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_scope_delete display_value="">36ea77e8e3fc4b9e9118049dcaafad04</sys_scope_delete>
+        <sys_update_name>sys_ui_module_4c3cc44593048210524174418bba10cb</sys_update_name>
+        <sys_update_version display_value="sys_ui_module_4c3cc44593048210524174418bba10cb">8c3cc44593048210524174418bba10cd</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 09:27:53</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

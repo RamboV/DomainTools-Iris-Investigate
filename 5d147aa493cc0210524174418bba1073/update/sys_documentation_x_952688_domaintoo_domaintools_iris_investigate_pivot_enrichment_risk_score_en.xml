@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="risk_score" label="Risk Score" language="en" table="x_952688_domaintoo_domaintools_iris_investigate_pivot_enrichment">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>risk_score</element>
+            <help/>
+            <hint/>
+            <label>Risk Score</label>
+            <language>en</language>
+            <name>x_952688_domaintoo_domaintools_iris_investigate_pivot_enrichment</name>
+            <plural>Risk Scores</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2024-01-28 09:37:01</sys_created_on>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Risk Score</sys_name>
+            <sys_package display_value="DomainTools Iris Investigate" source="x_952688_domaintoo">5d147aa493cc0210524174418bba1073</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+            <sys_update_name>sys_documentation_x_952688_domaintoo_domaintools_iris_investigate_pivot_enrichment_risk_score_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2024-01-28 09:37:01</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

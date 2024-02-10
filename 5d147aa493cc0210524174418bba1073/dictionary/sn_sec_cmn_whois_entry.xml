@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="update_synch=false" audit="true" db_object_id="cdebaae8930c0210524174418bba10a4" extends="sn_sec_cmn_enrichment_data_base" label="Whois Entry" max_length="40" name="sn_sec_cmn_whois_entry" type="collection">
+        <element label="IP Address" max_length="40" name="x_952688_domaintoo_ip_address" type="ip_addr"/>
+        <element label="Nameserver" max_length="1000" name="x_952688_domaintoo_nameserver" type="glide_list"/>
+    </element>
+</database>

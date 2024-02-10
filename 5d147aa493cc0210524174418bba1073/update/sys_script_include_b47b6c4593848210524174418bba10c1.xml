@@ -1,0 +1,755 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_952688_domaintoo.DomainToolsObservableEnrichment</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>DomainToolsObservableEnrichment</name>
+        <script><![CDATA[var DomainToolsObservableEnrichment = Class.create();
+DomainToolsObservableEnrichment.prototype = {
+    _USERNAME: null,
+    _API_KEY: null,
+    _DOMAIN_ID: 'global',
+    _REST_MSG_NAME: 'DomainTools Iris Investigate',
+    _SOURCE_ENGINE: 'DomainTools Iris API',
+    _SOURCE_ENGINE_VERSION: 'v2',
+    _INTEGRATION_ID: null,
+    _CAPABILITY_IMPLEMENTATION_ID: null,
+    _ENRICH_CAPABILITY_ID: "9ad183640b1003009f66e94685673af4",
+    _ENRICHMENT_MAPPING_ID: "9c3a13be0b703200263a089b37673ae0",
+    _FORMAT: 'json',
+    _DOMAIN_OBS_TYPE: '555d47809f81120035c6786f957fcf72',
+    _SHA1_OBS_TYPE: '392d47809f81120035c6786f957fcf0e',
+    _OBS_TYPE_URL: 'ec9d47809f81120035c6786f957fcfa7',
+    _DOMAIN_TYPE: "Domain name",
+    _JSON_UTIL: new global.JSON(),
+    _CRITICAL: 1,
+    _HIGH: 2,
+    _MODERATE: 3,
+    _LOW: 4,
+    _PLANNING: 5,
+    _OBS_TYPE_PARAM_MAPPING: {
+        '659cb6630b820300263a089b37673a39': 'address', // Address type
+        '5d0b43809f81120035c6786f957fcf71': 'ip', //IP address
+        '9facb6630b820300263a089b37673a41': 'organization', // Organization type
+        'b8fcb6630b820300263a089b37673a4c': 'phone', // Phone number type
+        '098d47809f81120035c6786f957fcfa4': 'email', // Email type
+        '866d47809f81120035c6786f957fcf95': 'nameserver', // Host name type
+        'ec9d47809f81120035c6786f957fcfa7': 'domain', // URL type (needs to be stripped to domain)
+        '555d47809f81120035c6786f957fcf72': 'domain', // Domain type
+        'dadefcfc071031101739fc289c1ed05f': 'registrant', // Registrant Name
+        'bd9409b4075031101739fc289c1ed03a': 'registrant_org', //  Registrant Organization
+        'cb41b8b007a131101739fc289c1ed07f': 'nameserver_ip', //  Nameserver IP
+        '10c1bc3007a131101739fc289c1ed0d8': 'nameserver_host', //  Nameserver Host
+        '44e1f8f007a131101739fc289c1ed0ef': 'mailserver_ip', // MailServer IP
+        '9bf178f007a131101739fc289c1ed0e9': 'mailserver_host', // Mailserver Host
+        '1e223cf007a131101739fc289c1ed015': 'ssl_email', // SSL Email
+        '8752b8f007a131101739fc289c1ed04d': 'ssl_hash', // SSL Hash
+        'bad2f4f007a131101739fc289c1ed04d': 'email_domain', //  Email Domain
+        '7693347407a131101739fc289c1ed0aa': 'search_hash', //  Search Hash
+        'aab3b8f007a131101739fc289c1ed053': 'tagged_with_any', // Tagged With Any
+        '49e33c3407a131101739fc289c1ed085': 'tagged_with_all' // Tagged With All
+    },
+    /**
+
+     * Constructor for this class. This DomainTools implementation is inheritently dependent
+
+     * on an implementation ID (capability framework) and a domain ID to locate the correct
+
+     * integration configuration record and the credentials for the integration that are
+
+     * associated with it.
+
+     *
+
+     * @param  implId     Implementation ID assigned by the capability framework
+
+     * @param  domainId   Domain ID of the domain the actions of the script are suppossed to run in
+
+     */
+    initialize: function(implId, domainId) {
+        gs.info("INSIDE INITIALIZE")
+        if (gs.nil(implId))
+            gs.error(gs.getMessage("error_impl_id"));
+        var intId = null;
+        var gr = new GlideRecord('sn_sec_cmn_integration_capability_implementation');
+        if (gr.get(implId))
+            intId = gr.getValue('integration');
+        if (gs.nil(intId))
+            gs.error(gs.getMessage("error_integration_id"));
+        this._CAPABILITY_IMPLEMENTATION_ID = implId;
+        this._INTEGRATION_ID = intId;
+        var credentials = this._getCredentials(intId, domainId);
+        this._API_KEY = credentials.api_key;
+        this._USERNAME = credentials.username;
+        if (gs.nil(this._API_KEY)) {
+            gs.error(gs.getMessage("Error: DomainTools script include cannot locate API key for integration with ID {0}", [intId]));
+        }
+        if (gs.nil(this._USERNAME)) {
+            gs.error(gs.getMessage("Error: DomainTools script include cannot locate username for integration with ID {0}", [intId]));
+        }
+        if (!gs.nil(domainId))
+            this._DOMAIN_ID = domainId;
+    },
+    performLookup: function(trackingId, observableId, domainId, taskSysId, malicious_tag, max_pivot, wfContextId, wfContextName) {
+        var success = this._createWorkflowResponse("", false);
+        var obsGr = new GlideRecord('sn_ti_observable');
+        gs.info("OBSERVABLE ID"+String(observableId));
+        gs.info(observableId);
+        gs.info(obsGr)
+        if (!obsGr.get(observableId))
+            return success;
+        var trackingGr = this._getTrackingGr(trackingId);
+        var paramName = this.getLookupType(obsGr);
+        if (!gs.nil(paramName) && !gs.nil(obsGr.value)) {
+            var request = this._buildBasicReportRequest(paramName, obsGr);
+            var resultData = this._retrieveLookupResults(request);
+            success = this._processLookupReport(trackingGr, obsGr, resultData, wfContextId, wfContextName, malicious_tag, max_pivot);
+        }
+        return success;
+    },
+    actionRequest: function(observableId, active, create_date, expiration_date) {
+        var json = new global.JSON();
+        var obsGr = new GlideRecord('sn_ti_observable');
+        if (!obsGr.get(observableId)){
+            return {
+                "contents": json.encode({error: "Invalid Observable!"})
+            };
+        }
+        var paramName = this.getLookupType(obsGr);
+        if (!gs.nil(paramName) && !gs.nil(obsGr.value)) {
+            var request = this._buildBasicReportRequest(paramName, obsGr, active, create_date, expiration_date);
+            var resultData = this._retrieveLookupResults(request);
+            return resultData;
+        }
+        return {
+            "contents": json.encode({"error": "Observable param type not found!"})
+        };
+    },
+    _createWorkflowResponse: function(rawData, success) {
+        return {
+            'response_data': rawData,
+            'success': success,
+            'mapping_id': this._ENRICHMENT_MAPPING_ID
+        };
+    },
+    _getTrackingGr: function(trackingId) {
+        var trackingGr = new GlideRecord('sn_sec_cmn_integration_capability_execution');
+        if (!gs.nil(trackingId) && trackingGr.get(trackingId))
+            return trackingGr;
+        return null;
+    },
+    getLookupType: function(obsGr) {
+        var lookupType = null;
+        gs.info("BEFORE TYPE");
+        var obsType = obsGr.getValue('type');
+        gs.info("OBS TYPE"+String(obsType));
+        return this._OBS_TYPE_PARAM_MAPPING[obsType];
+    },
+    _buildBasicReportRequest: function(paramName, obsGr, active = null, create_date = "", expiration_date = "") {
+        var searchValue = obsGr.value + '';
+        var obsType = obsGr.type + '';
+        if (obsType == this._OBS_TYPE_URL || obsType == this._OBS_TYPE_DOMAIN) {
+            searchValue = searchValue.replace(/^(?:https?|ftp)\:\/\//i, "");
+            searchValue = searchValue.replace(/^\www\./i, "");
+            searchValue = searchValue.replace(/^\*\./, "");
+            searchValue = searchValue.split('/')[0];
+        }
+        var restMessage = new sn_ws.RESTMessageV2(this._REST_MSG_NAME, 'get');
+        if (!gs.nil(active)){
+            restMessage.setStringParameter('active', active);
+        }
+        if (!gs.nil(create_date) && create_date !== ""){
+            restMessage.setStringParameter('create_date', create_date);
+        }
+        if (!gs.nil(expiration_date && expiration_date !== "")){
+            restMessage.setStringParameter('expiration_date', expiration_date);
+        }
+        restMessage.setStringParameter(paramName, searchValue);
+        restMessage.setStringParameter('api_key', this._API_KEY);
+        restMessage.setStringParameter('api_username', this._USERNAME);
+        return restMessage;
+    },
+    _retrieveLookupResults: function(restMessage) {
+        try {
+            var response = restMessage.execute();
+            var responseBody = response.getBody();
+            var httpStatus = response.getStatusCode();
+            if (httpStatus != "200")
+                throw new Error(response.getErrorMessage());
+            return {
+                "contents": responseBody,
+                "contentType": "json"
+            };
+        } catch (ex) {
+            var message = ex.name + ": " + ex.message;
+            var resp = {
+                error: message
+            };
+            var json = new global.JSON();
+            var response = json.encode(resp);
+            return {
+                "contents": response
+            };
+        }
+    },
+    _processLookupReport: function(trackingGr, obsGr, responseData, wfContextId, wfContextName, malicious_tag, max_pivot) {
+        gs.info("inside process lookup")
+        var json = new global.JSON();
+        var response = json.decode(responseData.contents);
+        response = response.response;
+        var statusMessage = null;
+        if (gs.nil(response)) {
+            this._updateTracking(trackingGr, responseData.contents, 'error', "unknown", gs.getMessage("Error: An error occurred. Observable: {0}", [obsGr.getValue("value")]), null);
+            // Add error worknotes to SI if applicable
+            if (!gs.nil(wfContextId) && !gs.nil(wfContextName)) {
+                statusMessage = response.error ? json.encode(response.error) : gs.getMessage("Error: Unsuccessful response from server. Observable: {0}", [obsGr.getValue("value")]);
+                var msgText = gs.getMessage('Workflow {0} execution error: {1}', ['$name', statusMessage]);
+                var errMsg = new sn_sec_cmn_orch.SecurityOrchestrationUtils().constructWorkflowWorknoteMessage(wfContextId, wfContextName, msgText);
+                new sn_sec_cmn_orch.SecurityOrchestrationUtils().updateTaskWorknotes(trackingGr.task + '', errMsg);
+            }
+            return this._createWorkflowResponse(responseData.contents, false);
+        } else if (response.results != null) {
+            var domainNames = [];
+            for (var i = 0; i < response.results.length; i++) {
+                var result = response.results[i];
+                if (!gs.nil(result.domain)) {
+                    var ava_tags = this._checkMalaciousTag(result, malicious_tag);
+                    this._markObsMalicious(obsGr, ava_tags);
+                    this._createObservable(result.domain, this._DOMAIN_OBS_TYPE, obsGr, ava_tags);
+                    var summary = this._createSummary(result, ava_tags);
+                    var resultGr = this._createObservableEnrichmentResult(obsGr.getUniqueValue(), result, summary, max_pivot);
+                    priority = this._CRITICAL;
+                    if (result.domain_risk.risk_score >= 90) {
+                        priority = this._HIGH;
+                    }
+                    this._markIncidentCritical(obsGr, ava_tags, priority);
+                    if (!gs.nil(resultGr))
+                        domainNames.push(result.domain);
+                }
+            }
+            var detailMsg = gs.getMessage('no_domains');
+            // If no domains were found, will create a observable enrichment result as well
+            if (response.results.length == 0)
+                this._createObservableEnrichmentResult(obsGr.getUniqueValue(), responseData.contents, detailMsg);
+            if (domainNames.length > 0)
+                detailMsg = gs.getMessage("Created entries for the following domains:\n {0}", [domainNames.join(", ")]);
+            var trackingOk = this._updateTracking(trackingGr, responseData.contents, 'complete', "success", gs.getMessage("Lookup completed and passed. Observable: {0}", [obsGr.getValue("value")]), detailMsg);
+            return this._createWorkflowResponse(responseData.contents, trackingOk);
+        } else {
+            // Add error worknotes to SI if applicable
+            if (!gs.nil(wfContextId) && !gs.nil(wfContextName)) {
+                statusMessage = gs.getMessage("Error: Unexpected 'DomainTools' API response format. Observable: {0}", [obsGr.getValue("value")]);
+                var msgText2 = gs.getMessage('Workflow {0} execution error: {1}', ['$name', statusMessage]);
+                var errMsg2 = new sn_sec_cmn_orch.SecurityOrchestrationUtils().constructWorkflowWorknoteMessage(wfContextId, wfContextName, msgText2);
+                new sn_sec_cmn_orch.SecurityOrchestrationUtils().updateTaskWorknotes(trackingGr.task + '', errMsg2);
+            }
+            this._updateTracking(trackingGr, responseData.contents, 'error', "unknown", statusMessage, null);
+            return this._createWorkflowResponse(responseData.contents, false);
+        }
+    },
+    _checkMalaciousTag: function(result, malicious_tag) {
+        var ava_tags = [];
+        var tags = result.tags;
+        if (malicious_tag && tags) {
+            var tag_label = [];
+            for (var i = 0; i < tags.length; i++) {
+                tag_label.push(tags[i].label);
+            }
+            input_malicious_tag = malicious_tag.split(",");
+            for (var j = 0; j < input_malicious_tag.length; j++) {
+                if (tag_label.includes(input_malicious_tag[j])) {
+                    ava_tags.push(input_malicious_tag[j]);
+                }
+            }
+        }
+        return ava_tags;
+    },
+    _updateTracking: function(trackingGr, rawData, state, substate, statusMessage, detailsMessage) {
+        if (!gs.nil(detailsMessage))
+            statusMessage += '\n\n' + detailsMessage;
+        trackingGr.setValue('state', state);
+        trackingGr.setValue('substate', substate);
+        trackingGr.setValue('status_message', statusMessage);
+        trackingGr.setValue('raw_data', rawData);
+        return trackingGr.update() ? true : false;
+    },
+    _markObsMalicious: function(obsGr, ava_tags) {
+        if (ava_tags.length > 0) {
+            var gr = new GlideRecord('sn_ti_observable');
+            gr.get(obsGr.getUniqueValue());
+            gr.setValue('finding', 'Malicious');
+            gr.setValue('notes', "Malicious tags: " + "[" + ava_tags.join(", ") + "]" + " are found in DomainTools Iris Investigate response.");
+            gr.update() ? gr : null;
+        }
+    },
+    _createObservable: function(value, type, refObsGr, ava_tags) {
+        var gr = new GlideRecord('sn_ti_observable');
+        gr.addQuery('value', value);
+        gr.addQuery('type', type);
+        gr.query();
+        if (!gr.next()) {
+            gr = new GlideRecord('sn_ti_observable');
+            gr.initialize();
+            gr.setValue('value', value);
+            gr.setValue('type', type);
+            if (ava_tags.length > 0) {
+                gr.setValue('finding', 'Malicious');
+                gr.setValue('notes', "Malicious tags: " + "[" + ava_tags.join(", ") + "]" + " are found in DomainTools Iris Investigate response.");
+            } else {
+                gr.setValue('finding', 'Unknown');
+                gr.setValue('notes', gs.getMessage("Adjacent observable to '{0}' of type {1}", [refObsGr.getValue('value'), refObsGr.getDisplayValue('type')]));
+            }
+            gr = gr.insert() ? gr : null;
+        }
+        if (gr) {
+            var m2m = new GlideRecord('sn_ti_m2m_observables');
+            m2m.initialize();
+            m2m.setValue('parent', refObsGr.getUniqueValue());
+            m2m.setValue('child', gr.getUniqueValue());
+            m2m = m2m.insert() ? m2m : null;
+        }
+        return !gs.nil(gr);
+    },
+    filterUnsupportedObservablesByType: function(observableIds) {
+        arrOfTypes = Object.keys(this._OBS_TYPE_PARAM_MAPPING);
+        if (gs.nil(observableIds))
+            return [];
+        var filteredObservableIds = [];
+        var gr = new GlideRecord('sn_ti_observable');
+        gr.addQuery('sys_id', 'IN', observableIds).addCondition('type', 'IN', arrOfTypes.join(','));
+        gr.query();
+        while (gr.next())
+            filteredObservableIds.push(gr.getUniqueValue() + '');
+        return filteredObservableIds;
+    },
+    isEnrichmentUpdatedInLast24Hours: function(observableId) {
+        var enrichmentUpdated = false;
+        /*var now = new GlideDateTime();
+
+        now.subtract(60000 * 60 * 24); //subtract 24 hour
+
+
+
+        var gr = new GlideRecord('sn_sec_cmn_integration_capability_execution');
+
+
+
+        var grJQ = gr.addJoinQuery('sn_sec_cmn_m2m_capability_execution_record');
+
+
+
+        gr.addQuery('capability', this._ENRICH_CAPABILITY_ID);
+
+        gr.addQuery('capability_implementation', this._CAPABILITY_IMPLEMENTATION_ID);
+
+        gr.addQuery('state', 'complete');
+
+        gr.addQuery('substate', 'success');
+
+        gr.addQuery('sys_created_on', ">=", now.getValue());
+
+        gr.addQuery('sys_domain', this._DOMAIN_ID);
+
+
+
+        grJQ.addCondition('record_id', observableId);
+
+
+
+        gr.query();
+
+        if (gr.next())
+
+            enrichmentUpdated = true;*/
+        return enrichmentUpdated;
+    },
+    _createObservableEnrichmentResult: function(observableId, rawEngineResult, summary, max_pivot) {
+        this._createDomainToolsRecords(observableId, rawEngineResult, max_pivot);
+        var gr = new GlideRecord('sn_ti_observable_enrichment_result');
+        gr.initialize();
+        gr.setValue('observable', observableId);
+        gr.setValue('summary', summary);
+        gr.setValue('data_type', this._FORMAT);
+        gr.setValue('retrieval_date', gr.getValue('sys_updated_on'));
+        gr.setValue('raw_data', this._JSON_UTIL.encode(rawEngineResult));
+        gr.setValue('sys_domain', this._DOMAIN_ID);
+        gr.setValue('vendor', this._INTEGRATION_ID);
+        return gr.insert() ? gr : null;
+    },
+    _createDomainToolsRecords: function(observableId, result, max_pivot) {
+        var tableName = 'x_952688_domaintoo_domaintools_iris_investigate_enrichment';
+        var gr = new GlideRecord(tableName);
+        gr.initialize();
+        var reg_contact = 'Name: ' + result.registrant_contact.name.value + " " + '\nCountry: ' + result.registrant_contact.country.value + " " + '\nPhone: ' + result.registrant_contact.phone.value;
+        var admin_contact = 'Name: ' + result.admin_contact.name.value + " " + '\nCountry: ' + result.admin_contact.country.value + " " + '\nPhone: ' + result.admin_contact.phone.value;
+        var technical_contact = 'Name: ' + result.technical_contact.name.value + " " + '\nCountry: ' + result.technical_contact.country.value + " " + '\nPhone: ' + result.technical_contact.phone.value;
+        var billing_contact = 'Name: ' + result.billing_contact.name.value + " " + '\nCountry: ' + result.billing_contact.country.value + " " + '\nPhone: ' + result.billing_contact.phone.value;
+        var reg_contact = 'Name: ' + result.registrant_contact.name.value + " " + '\nCountry: ' + result.registrant_contact.country.value + " " + '\nPhone: ' + result.registrant_contact.phone.value;
+        var admin_contact = 'Name: ' + result.admin_contact.name.value + " " + '\nCountry: ' + result.admin_contact.country.value + " " + '\nPhone: ' + result.admin_contact.phone.value;
+        var technical_contact = 'Name: ' + result.technical_contact.name.value + " " + '\nCountry: ' + result.technical_contact.country.value + " " + '\nPhone: ' + result.technical_contact.phone.value;
+        var billing_contact = 'Name: ' + result.billing_contact.name.value + " " + '\nCountry: ' + result.billing_contact.country.value + " " + '\nPhone: ' + result.billing_contact.phone.value;
+        var soa_email = [];
+        var soa_email_wrf_count = [];
+        for (var j = 0; j < result.soa_email.length; j++) {
+            soa_email.push(result.soa_email[j].value);
+            if ((0 < result.soa_email[j].count) && (result.soa_email[j].count <= max_pivot)) {
+                soa_email_wrf_count.push(result.soa_email[j].value);
+            }
+        }
+        var tag_label = [];
+        for (var j = 0; j < result.tags.length; j++) {
+            tag_label.push(result.tags[j].label);
+        }
+        var ssl_email = [];
+        var ssl_email_wrf_count = [];
+        for (var j = 0; j < result.ssl_email.length; j++) {
+            ssl_email.push(result.ssl_email[j].value);
+            if ((0 < result.ssl_email[j].count) && (result.ssl_email[j].count <= max_pivot)) {
+                ssl_email_wrf_count.push(result.ssl_email[j].value);
+            }
+        }
+        var ssl_hash = [];
+        var ssl_hash_wrf_count = [];
+        for (var j = 0; j < result.ssl_info.length; j++) {
+            ssl_hash.push(result.ssl_info[j].hash.value);
+            if ((0 < result.ssl_info[j].hash.count) && (result.ssl_info[j].hash.count <= max_pivot)) {
+                ssl_hash_wrf_count.push(result.ssl_info[j].hash.value);
+            }
+        }
+        var email_domains = [];
+        for (var j = 0; j < result.email_domain.length; j++) {
+            email_domains.push(result.email_domain[j].value);
+        }
+        var ip_addresses = [];
+        var ip_addresses_wrf_count = [];
+        var ip_add_country = '';
+        for (var j = 0; j < result.ip.length; j++) {
+            ip_addresses.push(result.ip[j].address.value);
+            ip_add_country = result.ip[j].country_code.value;
+            if ((0 < result.ip[j].address.count) && (result.ip[j].address.count <= max_pivot)) {
+                ip_addresses_wrf_count.push(result.ip[j].address.value);
+            }
+        }
+        var mx_host = [];
+        var mx_host_wrf_count = [];
+        for (var j = 0; j < result.mx.length; j++) {
+            mx_host.push(result.mx[j].host.value);
+            if ((0 < result.mx[j].host.count) && (result.mx[j].host.count <= max_pivot)) {
+                mx_host_wrf_count.push(result.mx[j].host.value);
+            }
+        }
+        var mx_ip = [];
+        for (var j = 0; j < result.mx.length; j++) {
+            for (var k = 0; k < result.mx[j].ip.length; k++) {
+                if ((0 < result.mx[j].ip[k].count) && (result.mx[j].ip[k].count <= max_pivot)) {
+                    mx_ip.push(result.mx[j].ip[k].value);
+                }
+            }
+        }
+        var name_server = [];
+        var name_server_host_wrf_count = [];
+        for (var j = 0; j < result.name_server.length; j++) {
+            name_server.push(result.name_server[j].host.value);
+            if ((0 < result.name_server[j].host.count) && (result.name_server[j].host.count <= max_pivot)) {
+                name_server_host_wrf_count.push(result.name_server[j].host.value);
+            }
+        }
+        var name_server_ip = [];
+        for (var j = 0; j < result.name_server.length; j++) {
+            for (var k = 0; k < result.name_server[j].ip.length; k++) {
+                if ((0 < result.name_server[j].ip[k].count) && (result.name_server[j].ip[k].count <= max_pivot)) {
+                    name_server_ip.push(result.name_server[j].ip[k].value);
+                }
+            }
+        }
+        var ssl_certificate = [];
+        for (var j = 0; j < result.ssl_info.length; j++) {
+            ssl_certificate.push(result.ssl_info[j].hash.value);
+        }
+        var additional_whois_email = [];
+        for (var j = 0; j < result.additional_whois_email.length; j++) {
+            additional_whois_email.push(result.additional_whois_email[j].value);
+        }
+        var registrant_name = '';
+        if ((0 < result.registrant_name.count) && (result.registrant_name.count <= max_pivot)) {
+            registrant_name = result.registrant_name.value
+        }
+        var registrant_org = '';
+        if ((0 < result.registrant_org.count) && (result.registrant_org.count <= max_pivot)) {
+            registrant_org = result.registrant_org.value
+        }
+        /*obs_record = new GlideRecord("sn_ti_observable")
+
+        obs_record.addQuery('value', result.domain);
+
+        obs_record.query();
+
+        while(obs_record.next()){
+
+        var sys_id = obs_record.getUniqueValue();
+
+        }*/
+        // Set the values in GlideRecord for each result
+        gr.setValue('sys_id', observableId);
+        gr.setValue('id', observableId);
+        gr.setValue('domain', result.domain);
+        gr.setValue('summary', 'DomainToolsIris');
+        gr.setValue('data_type', 'json');
+        gr.setValue('retrieval_date', gr.getValue('sys_updated_on'));
+        gr.setValue('raw_data', this._JSON_UTIL.encode(result));
+        gr.setValue('sys_domain', 'global');
+        gr.setValue('name', result.domain);
+        gr.setValue('overallriskscore', result.domain_risk.risk_score);
+        gr.setValue('alexa_rank', result.popularity_rank);
+        gr.setValue('tags', tag_label);
+        gr.setValue('registrant_name', result.registrant_name.value);
+        gr.setValue('registrant_org', result.registrant_org.value);
+        gr.setValue('registrant_contact', reg_contact);
+        gr.setValue('soa_email', soa_email);
+        gr.setValue('ssl_certificate_email', ssl_email);
+        gr.setValue('admin_contact', admin_contact);
+        gr.setValue('technical_contact', technical_contact);
+        gr.setValue('billing_contact', billing_contact);
+        gr.setValue('email_domains', email_domains);
+        gr.setValue('additional_whois_emails', additional_whois_email);
+        gr.setValue('domain_registrant', result.registrar.value);
+        gr.setValue('registrar_status', result.registrar_status);
+        gr.setValue('domain_status', result.active);
+        gr.setValue('create_date', result.create_date.value);
+        gr.setValue('expiration_date', result.expiration_date.value);
+        gr.setValue('ip_addresses', ip_addresses);
+        gr.setValue('ip_country_code', ip_add_country);
+        gr.setValue('mail_servers', mx_host);
+        gr.setValue('name_servers', name_server);
+        gr.setValue('ssl_certificate', ssl_certificate);
+        gr.setValue('redirects_to', result.redirect.value);
+        gr.insert();
+        this._createDomainRiskScore(observableId, result.domain, result.domain_risk);
+        this._make_ObsEnrResult(observableId, ip_addresses_wrf_count, registrant_name, registrant_org, name_server_host_wrf_count, name_server_ip, mx_ip, mx_host_wrf_count, ssl_email_wrf_count, ssl_hash_wrf_count, soa_email_wrf_count);
+    },
+    _make_ObsEnrResult: function(observableId, ip_addresses, registrant_name, registrant_org, nameserver_host, nameserver_ip, mx_ip, mx_host, ssl_email, ssl_hash, soa_email) {
+        if (ip_addresses.length) {
+            this._createPivotObservableEnrichmentResult(observableId, ip_addresses, "ip");
+        }
+        if (registrant_name) {
+            this._createPivotObservableEnrichmentResult(observableId, [registrant_name], "registrant");
+        }
+        if (registrant_org) {
+            this._createPivotObservableEnrichmentResult(observableId, [registrant_org], "registrant_org");
+        }
+        if (nameserver_host.length) {
+            this._createPivotObservableEnrichmentResult(observableId, nameserver_host, "nameserver_host");
+        }
+        if (nameserver_ip.length) {
+            this._createPivotObservableEnrichmentResult(observableId, nameserver_ip, "nameserver_ip");
+        }
+        if (mx_ip.length) {
+            this._createPivotObservableEnrichmentResult(observableId, mx_ip, "mailserver_ip");
+        }
+        if (mx_host.length) {
+            this._createPivotObservableEnrichmentResult(observableId, mx_host, "mailserver_host");
+        }
+        if (ssl_email.length) {
+            this._createPivotObservableEnrichmentResult(observableId, ssl_email, "ssl_email");
+        }
+        if (ssl_hash.length) {
+            this._createPivotObservableEnrichmentResult(observableId, ssl_hash, "ssl_hash");
+        }
+        if (soa_email.length) {
+            this._createPivotObservableEnrichmentResult(observableId, soa_email, "email");
+        }
+        return true;
+    },
+    _markIncidentCritical: function(obsgr, ava_tags, priority) {
+        if (ava_tags.length > 0) {
+            task_m2m = new GlideRecord('sn_ti_m2m_task_observable');
+            task_m2m.addQuery('observable', obsgr.getUniqueValue());
+            task_m2m.query();
+            if (task_m2m.hasNext()) {
+                while (task_m2m.next()) {
+                    inc = new GlideRecord('sn_si_incident');
+                    inc.get(task_m2m.getValue('task'));
+                    inc.setValue('priority', priority);
+                    inc.update();
+                }
+            }
+        }
+    },
+    _createPivotObservableEnrichmentResult: function(observableId, pivot_array, type) {
+        var gr = new GlideRecord('sn_ti_observable_enrichment_result');
+        gr.initialize();
+        for (var i = 0; i < pivot_array.length; i++) {
+            var restMessage = new sn_ws.RESTMessageV2("DomainTools Iris Investigate", "get");
+            restMessage.setStringParameter(type, pivot_array[i]);
+            restMessage.setStringParameter('api_key', this._API_KEY);
+            restMessage.setStringParameter('api_username', this._USERNAME);
+            var response = restMessage.execute();
+            try {
+                var responseBody = response.getBody();
+                var json = new global.JSON();
+                var data = json.decode(responseBody);
+                var results = data.response.results;
+                gr.setValue('observable', observableId);
+                gr.setValue('summary', this._getSummary(type) + " - " + pivot_array[i]);
+                gr.setValue('data_type', this._FORMAT);
+                gr.setValue('retrieval_date', gr.getValue('sys_updated_on'));
+                gr.setValue('raw_data', this._JSON_UTIL.encode(results));
+                gr.setValue('sys_domain', this._DOMAIN_ID);
+                gr.setValue('vendor', this._INTEGRATION_ID);
+                gr.insert();
+                this._createPivotEnrichment(results, observableId, pivot_array[i], type);
+            } catch (ex) {
+                var message = ex.name + ": " + ex.message;
+            }
+        }
+        return true;
+    },
+    _createPivotEnrichment: function(results, observableId, pivot_value, type) {
+        var pt = new GlideRecord('x_952688_domaintoo_domaintools_iris_investigate_pivot_enrichment');
+        pt.initialize();
+        for (var j = 0; j < results.length; j++) {
+            var result = results[j];
+            pt.setValue('sys_id', observableId);
+            pt.setValue('id', observableId);
+            pt.setValue('pivot_by', type);
+            pt.setValue('pivot_value', pivot_value);
+            pt.setValue('domain', result.domain);
+            pt.setValue('risk_score', result.domain_risk.risk_score);
+            pt.insert();
+        }
+        return true;
+    },
+    _createDomainRiskScore: function(observableId, domain, domain_risk_score) {
+        var gr = new GlideRecord('x_952688_domaintoo_domaintools_iris_risk_score');
+        gr.initialize();
+        gr.setValue('observable', observableId);
+        gr.setValue('sys_id', observableId);
+        gr.setValue('id', observableId);
+        gr.setValue('domain', domain);
+        gr.setValue('domainriskscore', domain_risk_score.risk_score);
+        for (var z = 0; z < domain_risk_score.components.length; z++) {
+            if (domain_risk_score.components[z].name == "proximity") {
+                gr.setValue('proximity', domain_risk_score.components[z].risk_score);
+            } else if (domain_risk_score.components[z].name == "threat_profile") {
+                gr.setValue('threat_profile', domain_risk_score.components[z].risk_score);
+            } else if (domain_risk_score.components[z].name == "threat_profile_malware") {
+                gr.setValue('threat_profile_malware', domain_risk_score.components[z].risk_score);
+            } else if (domain_risk_score.components[z].name == "threat_profile_phishing") {
+                gr.setValue('threat_profile_phishing', domain_risk_score.components[z].risk_score);
+            } else if (domain_risk_score.components[z].name == "threat_profile_spam") {
+                gr.setValue('threat_profile_spam', domain_risk_score.components[z].risk_score);
+            }
+        }
+        gr.insert();
+        return true;
+    },
+    _createObsEnrResSummary: function(ip_addresses) {
+        if (ip_addresses.length) {
+            var restMessage = new sn_ws.RESTMessageV2("DomainTools Iris Investigate", "get");
+            restMessage.setStringParameter("ip", ip_addresses[0]);
+            restMessage.setStringParameter('api_key', this._API_KEY);
+            restMessage.setStringParameter('api_username', this._USERNAME);
+            var response = restMessage.execute();
+            try {
+                var responseBody = response.getBody();
+                var json = new global.JSON();
+                var data = json.decode(responseBody);
+                var results = data.response.results;
+                return "Pivot by IP --- " + this._JSON_UTIL.encode(results);
+            } catch (ex) {
+                var message = ex.name + ": " + ex.message;
+            }
+            return "Pivot by IP --- ";
+        }
+    },
+    _getSummary: function(type) {
+        if (type == "ip") {
+            return "Pivot by IP";
+        }
+        if (type == "registrant") {
+            return "Pivot by Registrant Name";
+        }
+        if (type == "registrant_org") {
+            return "Pivot by Registrant Org";
+        }
+        if (type == "nameserver_host") {
+            return "Pivot by Nameserver Host";
+        }
+        if (type == "nameserver_ip") {
+            return "Pivot by Nameserver IP Address";
+        }
+        if (type == "mailserver_ip") {
+            return "Pivot by MX IP";
+        }
+        if (type == "mailserver_host") {
+            return "Pivot by MX Host";
+        }
+        if (type == "ssl_email") {
+            return "Pivot by SSL Email";
+        }
+        if (type == "ssl_hash") {
+            return "Pivot by SSL Hash";
+        }
+        if (type == "email") {
+            return "Pivot by Email";
+        }
+        return "";
+    },
+    _createSummary: function(result, ava_tags) {
+        var summaryArr = [];
+        if (!gs.nil(result.domain))
+            summaryArr.push(gs.getMessage("Domain: {0}", result.domain));
+        if (ava_tags.length > 0)
+            summaryArr.push(gs.getMessage("Malicious Tags: [{0}] are found in DomainTools Iris Investigate", ava_tags.join(", ")))
+        if (!gs.nil(result.registrar))
+            summaryArr.push(gs.getMessage("Registrar: {0}", result.registrar.value));
+        if (!gs.nil(result.registrar_status))
+            summaryArr.push(gs.getMessage("Registrar status: {0}", result.registrar_status));
+        if (!gs.nil(result.expiration_date))
+            summaryArr.push(gs.getMessage("Expiration date: {0}", result.expiration_date.value));
+        if (!gs.nil(result.registrar) && !gs.nil(result.registrant_contact.country))
+            summaryArr.push(gs.getMessage("Registrant country: {0}", result.registrant_contact.country.value));
+        return summaryArr.join('\n');
+    },
+    isValidClass: function() {
+        return !gs.nil(this._INTEGRATION_ID);
+    },
+    _getCredentials: function(intId, domainId) {
+        var credentials = {};
+        var config = new GlideRecord("sn_sec_core_integration_item_config");
+        config.addQuery("name", "IN", "apiKey,userName");
+        config.addQuery("integration", intId);
+        if (!gs.nil(domainId))
+            config.addQuery("sys_domain", domainId);
+        config.query();
+        if (config.hasNext()) {
+            while (config.next()) {
+                if (config.getValue('name') == 'apiKey')
+                    credentials.api_key = config.getElement('password_value').getDecryptedValue();
+                if (config.getValue('name') == 'userName')
+                    credentials.username = config.getValue('value');
+            }
+        } else if (domainId != 'global') {
+            return this._getCredentials(intId, 'global');
+        }
+        return credentials;
+    },
+    type: 'DomainToolsObservableEnrichment'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 10:12:20</sys_created_on>
+        <sys_id>b47b6c4593848210524174418bba10c1</sys_id>
+        <sys_mod_count>22</sys_mod_count>
+        <sys_name>DomainToolsObservableEnrichment</sys_name>
+        <sys_package display_value="DomainTools Iris Investigate" source="x_952688_domaintoo">5d147aa493cc0210524174418bba1073</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_update_name>sys_script_include_b47b6c4593848210524174418bba10c1</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-02-01 08:12:42</sys_updated_on>
+    </sys_script_include>
+</record_update>

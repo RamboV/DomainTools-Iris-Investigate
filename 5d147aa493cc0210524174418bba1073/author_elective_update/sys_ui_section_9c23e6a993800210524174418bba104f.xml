@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section action="DELETE" caption="Administrative Contact" section_id="9c23e6a993800210524174418bba104f" sys_domain="global" table="sn_sec_cmn_whois_entry" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>administrative_contact</element>
+            <position>0</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2024-01-30 08:11:19</sys_created_on>
+            <sys_id>a823e6a993800210524174418bba1063</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Administrative Contact" display_value="Administrative Contact" name="sn_sec_cmn_whois_entry" sys_domain="global" view="Default view">9c23e6a993800210524174418bba104f</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2024-01-30 08:11:19</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>1</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2024-01-30 08:11:19</sys_created_on>
+            <sys_id>2c23e6a993800210524174418bba1063</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Administrative Contact" display_value="Administrative Contact" name="sn_sec_cmn_whois_entry" sys_domain="global" view="Default view">9c23e6a993800210524174418bba104f</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2024-01-30 08:11:19</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_section action="DELETE">
+            <caption>Administrative Contact</caption>
+            <header>false</header>
+            <name>sn_sec_cmn_whois_entry</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2024-01-30 08:11:18</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>9c23e6a993800210524174418bba104f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>sn_sec_cmn_whois_entry</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="DomainTools Iris Investigate" source="x_952688_domaintoo">5d147aa493cc0210524174418bba1073</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+            <sys_update_name>sys_ui_section_9c23e6a993800210524174418bba104f</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2024-01-30 08:11:18</sys_updated_on>
+            <sys_user/>
+            <title>false</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</application>
+        <file_path/>
+        <instance_id>3bcc33a11be275501024eb9b2d4bcbd2</instance_id>
+        <instance_name>dev214094</instance_name>
+        <name>sys_ui_section_9c23e6a993800210524174418bba104f</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update><sys_ui_section caption="Administrative Contact" section_id="9c23e6a993800210524174418bba104f" sys_domain="global" table="sn_sec_cmn_whois_entry" version="3" view=""><sys_ui_element action="INSERT_OR_UPDATE"><element>administrative_contact</element><position>0</position><sys_created_by>admin</sys_created_by><sys_created_on>2024-01-30 08:11:19</sys_created_on><sys_id>a823e6a993800210524174418bba1063</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="Administrative Contact" display_value="Administrative Contact" name="sn_sec_cmn_whois_entry" sys_domain="global" view="Default view">9c23e6a993800210524174418bba104f</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2024-01-30 08:11:19</sys_updated_on><sys_user/><type/></sys_ui_element><sys_ui_element action="INSERT_OR_UPDATE"><element>.split</element><position>1</position><sys_created_by>admin</sys_created_by><sys_created_on>2024-01-30 08:11:19</sys_created_on><sys_id>2c23e6a993800210524174418bba1063</sys_id><sys_mod_count>0</sys_mod_count><sys_ui_formatter/><sys_ui_section caption="Administrative Contact" display_value="Administrative Contact" name="sn_sec_cmn_whois_entry" sys_domain="global" view="Default view">9c23e6a993800210524174418bba104f</sys_ui_section><sys_updated_by>admin</sys_updated_by><sys_updated_on>2024-01-30 08:11:19</sys_updated_on><sys_user/><type>.split</type></sys_ui_element><sys_ui_section action="INSERT_OR_UPDATE"><caption>Administrative Contact</caption><header>false</header><name>sn_sec_cmn_whois_entry</name><roles/><sys_class_name>sys_ui_section</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2024-01-30 08:11:18</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>9c23e6a993800210524174418bba104f</sys_id><sys_mod_count>0</sys_mod_count><sys_name>sn_sec_cmn_whois_entry</sys_name><sys_overrides/><sys_package display_value="DomainTools Iris Investigate" source="x_952688_domaintoo">5d147aa493cc0210524174418bba1073</sys_package><sys_policy/><sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope><sys_update_name>sys_ui_section_9c23e6a993800210524174418bba104f</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2024-01-30 08:11:18</sys_updated_on><sys_user/><title>false</title><view display_value="Default view" name="NULL">Default view</view><view_name/></sys_ui_section></sys_ui_section></record_update>]]></payload>
+        <payload_hash>794384466</payload_hash>
+        <record_name>Whois Entry</record_name>
+        <reverted_from/>
+        <source>1d14fe2893cc0210524174418bba104e</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-30 08:11:19</sys_created_on>
+        <sys_id>e823e6a993800210524174418bba1065</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>18d596c31590000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-30 08:11:19</sys_updated_on>
+        <type>Form Layout</type>
+        <update_guid>6023e6a9c5800210ea4f7f31226f1165</update_guid>
+        <update_guid_history>6023e6a9c5800210ea4f7f31226f1165:794384466</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-30 08:13:04</sys_created_on>
+        <sys_db_object display_value="" name="sys_ui_section">sys_ui_section</sys_db_object>
+        <sys_id>00f5ddb7d9b148bf800122d69857a0d9</sys_id>
+        <sys_metadata>9c23e6a993800210524174418bba104f</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Administrative Contact</sys_name>
+        <sys_package display_value="DomainTools Iris Investigate" source="x_952688_domaintoo">5d147aa493cc0210524174418bba1073</sys_package>
+        <sys_parent display_value="Sn Sec Cmn Whois Entry">cdebaae8930c0210524174418bba10a4</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_scope_delete display_value="">36ea77e8e3fc4b9e9118049dcaafad04</sys_scope_delete>
+        <sys_update_name>sys_ui_section_9c23e6a993800210524174418bba104f</sys_update_name>
+        <sys_update_version display_value="sys_ui_section_9c23e6a993800210524174418bba104f">e823e6a993800210524174418bba1065</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-30 08:13:04</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

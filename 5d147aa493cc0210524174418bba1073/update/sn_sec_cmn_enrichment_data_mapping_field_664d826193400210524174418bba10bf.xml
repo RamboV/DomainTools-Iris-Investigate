@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_sec_cmn_enrichment_data_mapping_field">
+    <sn_sec_cmn_enrichment_data_mapping_field action="INSERT_OR_UPDATE">
+        <append_separator>, </append_separator>
+        <enrichment_data_mapping display_value="DomainTools WHOIS IP Mapping">fecc826193400210524174418bba108e</enrichment_data_mapping>
+        <is_referenced>false</is_referenced>
+        <order>100</order>
+        <prefix_conditions>FIELD</prefix_conditions>
+        <property_key>address.value</property_key>
+        <static_value/>
+        <sys_class_name>sn_sec_cmn_enrichment_data_mapping_field</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-30 06:40:58</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>664d826193400210524174418bba10bf</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="DomainTools Iris Investigate" source="x_952688_domaintoo">5d147aa493cc0210524174418bba1073</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_update_name>sn_sec_cmn_enrichment_data_mapping_field_664d826193400210524174418bba10bf</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-30 06:40:58</sys_updated_on>
+        <target_enrichment_mapping/>
+        <target_field>host_ip</target_field>
+        <target_field_filtered display_value="Host IP" element="host_ip" name="sn_sec_cmn_whois_host_ip">19cbae68930c0210524174418bba1024</target_field_filtered>
+        <transform/>
+    </sn_sec_cmn_enrichment_data_mapping_field>
+</record_update>

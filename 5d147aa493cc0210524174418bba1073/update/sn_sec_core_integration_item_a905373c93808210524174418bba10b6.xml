@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sn_sec_core_integration_item">
+    <sn_sec_core_integration_item action="INSERT_OR_UPDATE">
+        <banner_logo>3ba6b33c93808210524174418bba1031</banner_logo>
+        <capabilities>9ad183640b1003009f66e94685673af4</capabilities>
+        <categories>3bfc8d08ab063200aa6de937f3a57ee6</categories>
+        <configurable>true</configurable>
+        <create_child_integration_item>false</create_child_integration_item>
+        <description>Requires a DomainTools Iris Investigate API key.</description>
+        <external_link/>
+        <help_link/>
+        <install_script/>
+        <installed>false</installed>
+        <max_child_integration_item/>
+        <name>DomainTools Iris Investigate</name>
+        <order>100</order>
+        <parent/>
+        <plugin_id>com.snc.threat</plugin_id>
+        <short_description>Facilitates automation of key infrastructure characterization and hunting portions of the incident response process. Organizations will have access to essential domain profile, web crawl, SSL, and infrastructure data. </short_description>
+        <sys_class_name>sn_sec_core_integration_item</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 06:20:42</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>a905373c93808210524174418bba10b6</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>DomainTools Iris Investigate</sys_name>
+        <sys_package display_value="DomainTools Iris Investigate" source="x_952688_domaintoo">5d147aa493cc0210524174418bba1073</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DomainTools Iris Investigate">5d147aa493cc0210524174418bba1073</sys_scope>
+        <sys_update_name>sn_sec_core_integration_item_a905373c93808210524174418bba10b6</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 07:05:36</sys_updated_on>
+        <validation_script><![CDATA[validate(sysId, values);
+
+function validate(sysId, values) {
+    var config = new x_952688_domaintoo.DomainToolsConfiguration().getConfigurationByIntegId(sysId); 	
+	var userName = values[config.userName];
+	var apiKey = values[config.apiKey];
+
+	if ((apiKey != '') && (userName != '')){
+		var response = validateStatus(userName, apiKey);
+		var statusCode = response.getStatusCode();
+
+		if (statusCode != 200)
+			result = response.getErrorMessage();
+	}	
+	return result;
+}
+
+function validateStatus(userName, apiKey) {
+	var baseEndpoint = 'https://api.domaintools.com/v1/iris-investigate/?domain=test.com'+'&api_username='+userName+'&api_key='+apiKey;
+	var restMessage = new sn_ws.RESTMessageV2();
+	restMessage.setHttpMethod("GET");
+	restMessage.setRequestHeader('Accept', 'application/json');
+	restMessage.setEndpoint(baseEndpoint);
+	//restMessage.setStringParameter('api_key', apiKey);
+	//restMessage.setStringParameter('api_username', userName);
+	return restMessage.execute();
+}]]></validation_script>
+    </sn_sec_core_integration_item>
+    <sys_attachment action="INSERT_OR_UPDATE">
+        <average_image_color>#303745</average_image_color>
+        <chunk_size_bytes>700000</chunk_size_bytes>
+        <compressed>true</compressed>
+        <content_type>image/png</content_type>
+        <encryption_context/>
+        <file_name>banner_logo</file_name>
+        <hash>67155ef2be2b2c647643a06dc88f7df831cbbc176389556f13d6a48bce2d0efb</hash>
+        <image_height>50</image_height>
+        <image_width>120</image_width>
+        <size_bytes>1912</size_bytes>
+        <size_compressed>1935</size_compressed>
+        <state>available</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 06:20:54</sys_created_on>
+        <sys_id>3ba6b33c93808210524174418bba1031</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-28 06:20:54</sys_updated_on>
+        <table_name>ZZ_YYsn_sec_core_integration_item</table_name>
+        <table_sys_id>a905373c93808210524174418bba10b6</table_sys_id>
+    </sys_attachment>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>H4sIAAAAAAAAAA==</data>
+        <length>16</length>
+        <position>0</position>
+        <sys_attachment display_value="banner_logo" sys_id="3ba6b33c93808210524174418bba1031">3ba6b33c93808210524174418bba1031</sys_attachment>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 06:20:54</sys_created_on>
+        <sys_id>7ba6b33c93808210524174418bba1031</sys_id>
+    </sys_attachment_doc>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>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</data>
+        <length>2568</length>
+        <position>1</position>
+        <sys_attachment display_value="banner_logo" sys_id="3ba6b33c93808210524174418bba1031">3ba6b33c93808210524174418bba1031</sys_attachment>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-28 06:20:54</sys_created_on>
+        <sys_id>fba6b33c93808210524174418bba1031</sys_id>
+    </sys_attachment_doc>
+</record_update>

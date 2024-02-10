@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="12e3288d93448210524174418bba1043" label="DomainTools Iris Risk Score" max_length="40" name="x_952688_domaintoo_domaintools_iris_risk_score" type="collection">
+        <element label="Domain" max_length="500" name="domain" type="string"/>
+        <element label="Domain Risk Score" max_length="40" name="domainriskscore" type="integer"/>
+        <element label="Id" max_length="1000" name="id" type="string"/>
+        <element label="Observable" max_length="1000" name="observable" type="string"/>
+        <element label="Proximity" max_length="40" name="proximity" type="integer"/>
+        <element label="Threat Profile" max_length="40" name="threat_profile" type="integer"/>
+        <element label="Threat Profile Malware" max_length="40" name="threat_profile_malware" type="integer"/>
+        <element label="Threat Profile Phishing" max_length="40" name="threat_profile_phishing" type="integer"/>
+        <element label="Threat Profile Spam" max_length="40" name="threat_profile_spam" type="integer"/>
+    </element>
+</database>

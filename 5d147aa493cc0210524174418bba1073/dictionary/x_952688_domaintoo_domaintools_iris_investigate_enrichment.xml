@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" db_object_id="6c34000d93c08210524174418bba10fc" extends="sn_sec_cmn_enrichment_data_base" label="DomainTools Iris Investigate Enrichment" max_length="40" name="x_952688_domaintoo_domaintools_iris_investigate_enrichment" type="collection">
+        <element label="Aadditional Whois Emails" max_length="4000" name="aadditional_whois_emails" type="glide_list"/>
+        <element label="Admin Contact" max_length="10000" name="admin_contact" type="string"/>
+        <element label="Alexa Rank" max_length="40" name="alexa_rank" type="integer"/>
+        <element label="Billing Contact" max_length="10000" name="billing_contact" type="string"/>
+        <element label="Create Date" max_length="40" name="create_date" type="glide_date"/>
+        <element label="Domain Registrant" max_length="1000" name="domain_registrant" type="string"/>
+        <element label="Domain Status" max_length="100" name="domain_status" type="string"/>
+        <element label="Email Domains" max_length="4000" name="email_domains" type="glide_list"/>
+        <element label="Expiration Date" max_length="40" name="expiration_date" type="glide_date"/>
+        <element label="First Seen" max_length="40" name="first_seen" type="glide_date"/>
+        <element label="ID" max_length="100" name="id" type="string"/>
+        <element label="IP Addresses" max_length="40" name="ip_addresses" type="glide_list"/>
+        <element label="IP Country Code" max_length="100" name="ip_country_code" type="string"/>
+        <element label="Mail Servers" max_length="4000" name="mail_servers" type="glide_list"/>
+        <element label="Name Server" max_length="4000" name="name_server" type="glide_list"/>
+        <element label="Overall Risk Score" max_length="40" name="overallriskscore" type="integer"/>
+        <element label="Redirects To" max_length="100" name="redirects_to" type="string"/>
+        <element label="Registrant Contact" max_length="10000" name="registrant_contact" type="string"/>
+        <element label="Registrant Name" max_length="100" name="registrant_name" type="string"/>
+        <element label="Registrant Org" max_length="100" name="registrant_org" type="string"/>
+        <element label="Registrar Status" max_length="100" name="registrar_status" type="glide_list"/>
+        <element label="Server Type" max_length="100" name="server_type" type="string"/>
+        <element label="SOA Email" max_length="4000" name="soa_email" type="glide_list"/>
+        <element label="SSL Certificate" max_length="4000" name="ssl_certificate" type="glide_list"/>
+        <element label="SSL Certificate Email" max_length="4000" name="ssl_certificate_email" type="glide_list"/>
+        <element label="Tags" max_length="4000" name="tags" type="glide_list"/>
+        <element label="Technical Contact" max_length="10000" name="technical_contact" type="string"/>
+        <element label="Website Title" max_length="100" name="website_title" type="string"/>
+    </element>
+</database>
